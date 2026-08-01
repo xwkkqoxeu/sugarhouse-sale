@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Print flyer — Moving Sale</title>
+<style>
+  @page { size: letter portrait; margin: 0.5in; }
+  * { box-sizing:border-box; margin:0; }
+  body { font-family:-apple-system, "Helvetica Neue", sans-serif; color:#111; text-align:center; padding:24px; }
+  .sheet { max-width:7.5in; margin:0 auto; border:4px solid #111; border-radius:18px; padding:36px 28px; }
+  h1 { font-size:44pt; line-height:1.05; letter-spacing:-1px; }
+  h2 { font-size:17pt; font-weight:600; margin-top:10px; }
+  .items { font-size:13pt; margin:16px auto 6px; line-height:1.5; }
+  img.qr { width:3.4in; height:3.4in; margin:18px 0 6px; }
+  .scan { font-size:15pt; font-weight:700; }
+  .contact { margin-top:22px; font-size:15pt; }
+  .line { display:inline-block; border-bottom:3px solid #111; min-width:3in; height:1.2em; vertical-align:bottom; }
+  .small { color:#444; font-size:10.5pt; margin-top:16px; }
+  @media print { body { padding:0; } .noprint { display:none; } }
+</style>
+</head>
+<body>
+<div class="noprint" style="margin-bottom:14px; color:#666;">Press ⌘P to print — fits one letter page.</div>
+<div class="sheet">
+  <h1>MOVING SALE<br>🏷️ EVERYTHING GOES</h1>
+  <h2>Your neighbor in this building is selling it all — priced to move</h2>
+  <div class="items">
+    TV · curved monitor · queen bed frame · desks · antique dressers ·
+    Le Creuset · mirrors · art · lamps · books · and lots of little stuff
+  </div>
+  <img class="qr" src="qr.svg" alt="QR code to catalog">
+  <div class="scan">📱 Scan to browse the full catalog with photos & prices</div>
+  <div class="contact">Text me: <span class="line"></span></div>
+  <div class="small">Cash or Venmo/Zelle · first come first served · you haul (I'm injured and can't lift — bring muscle for the big pieces)</div>
+</div>
+</body>
+</html>
