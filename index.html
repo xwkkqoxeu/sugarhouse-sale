@@ -3,108 +3,190 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sugar House Moving Sale — everything must go</title>
+<title>Yard Sale — 4th floor</title>
 <meta name="robots" content="noindex">
 <style>
   :root { --bg:#faf7f2; --card:#fff; --ink:#1e1b16; --sub:#6b6257; --accent:#b4552d; --good:#2d7a4f; }
   * { box-sizing:border-box; margin:0; }
   body { font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:var(--bg); color:var(--ink); padding:16px; max-width:900px; margin:0 auto; }
-  header { text-align:center; padding:18px 8px 10px; }
+  header { text-align:center; padding:18px 8px 16px; }
   h1 { font-size:1.6rem; letter-spacing:.5px; }
   .tag { color:var(--sub); margin-top:6px; font-size:.95rem; }
-  .how { background:var(--card); border:1px solid #e7ded2; border-radius:12px; padding:12px 14px; margin:14px 0 20px; font-size:.92rem; line-height:1.45; }
-  .how b { color:var(--accent); }
+  .tag a { color:var(--accent); font-weight:700; }
   h2 { font-size:1.05rem; text-transform:uppercase; letter-spacing:.12em; color:var(--sub); margin:22px 4px 10px; }
   .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px; }
-  .card { background:var(--card); border:1px solid #eee4d6; border-radius:12px; overflow:hidden; display:flex; flex-direction:column; }
-  .card a.ph { display:block; aspect-ratio:1; overflow:hidden; background:#eee; }
-  .card img { width:100%; height:100%; object-fit:cover; display:block; }
-  .card .noimg { display:flex; align-items:center; justify-content:center; aspect-ratio:1; background:#efe9df; color:var(--sub); font-size:.85rem; }
+  .card { background:var(--card); border:1px solid #eee4d6; border-radius:12px; overflow:hidden; display:flex; flex-direction:column; cursor:pointer; transition:transform .08s; }
+  .card:active { transform:scale(.98); }
+  .ph { aspect-ratio:1; overflow:hidden; background:#eee; position:relative; }
+  .ph img { width:100%; height:100%; object-fit:cover; display:block; }
+  .ph.contain { background:#f3efe8; }
+  .ph.contain img { object-fit:contain; }
+  .ph .more { position:absolute; right:6px; bottom:6px; background:rgba(0,0,0,.55); color:#fff; font-size:.7rem; padding:2px 7px; border-radius:10px; }
+  .noimg { display:flex; align-items:center; justify-content:center; aspect-ratio:1; background:#efe9df; color:var(--sub); font-size:.85rem; }
   .info { padding:10px 12px 12px; display:flex; flex-direction:column; gap:4px; flex:1; }
   .name { font-size:.95rem; font-weight:600; line-height:1.25; }
   .price { color:var(--accent); font-weight:700; font-size:1.05rem; }
   .note { color:var(--sub); font-size:.8rem; line-height:1.3; }
-  .sold .price { color:#999; text-decoration:line-through; }
-  .claim { margin-top:auto; padding-top:8px; font-size:.85rem; color:var(--good); font-weight:700; text-decoration:none; }
-  .thumbs { display:grid; grid-template-columns:repeat(4,1fr); gap:4px; margin-top:6px; }
-  .thumbs a { display:block; aspect-ratio:1; overflow:hidden; border-radius:6px; }
-  .thumbs img { width:100%; height:100%; object-fit:cover; }
-  .sold img { filter:grayscale(1) opacity(.55); }
-  .badge { position:relative; }
   footer { text-align:center; color:var(--sub); font-size:.85rem; margin:28px 0 12px; line-height:1.5; }
+
+  /* modal */
+  #ov { position:fixed; inset:0; background:rgba(20,15,10,.6); display:none; align-items:flex-end; justify-content:center; z-index:10; }
+  #ov.open { display:flex; }
+  #sheet { background:var(--card); width:100%; max-width:640px; max-height:92vh; border-radius:18px 18px 0 0; overflow-y:auto; animation:up .18s ease-out; }
+  @keyframes up { from { transform:translateY(40px); opacity:.6; } to { transform:none; opacity:1; } }
+  @media (min-width:700px) { #ov { align-items:center; } #sheet { border-radius:18px; } }
+  #mhead { display:flex; justify-content:flex-end; position:sticky; top:0; }
+  #mclose { border:0; background:rgba(0,0,0,.45); color:#fff; font-size:1.15rem; line-height:1; padding:8px 12px; border-radius:0 0 0 12px; cursor:pointer; }
+  #mstage { position:relative; background:#f3efe8; }
+  #mimg { width:100%; height:44vh; object-fit:contain; display:block; }
+  .nav { position:absolute; top:50%; transform:translateY(-50%); border:0; background:rgba(0,0,0,.4); color:#fff; font-size:1.3rem; padding:10px 13px; border-radius:50%; cursor:pointer; }
+  #prev { left:8px; } #next { right:8px; }
+  #mthumbs { display:flex; gap:6px; padding:8px 12px 0; overflow-x:auto; }
+  #mthumbs img { width:56px; height:56px; object-fit:cover; border-radius:8px; opacity:.55; cursor:pointer; flex:0 0 auto; }
+  #mthumbs img.on { opacity:1; outline:2px solid var(--accent); }
+  #mbody { padding:12px 16px 22px; }
+  #mname { font-size:1.15rem; font-weight:700; line-height:1.3; }
+  #mprice { color:var(--accent); font-weight:800; font-size:1.35rem; margin:4px 0 8px; }
+  #mdetails { color:var(--ink); font-size:.95rem; line-height:1.5; }
+  #mcontact { margin-top:14px; padding-top:12px; border-top:1px solid #eee4d6; color:var(--sub); font-size:.9rem; }
+  #mcontact a { color:var(--good); font-weight:700; }
 </style>
 </head>
 <body>
 <header>
   <h1>🏷️ YARD SALE!!</h1>
-  <div class="tag">Located on the 4th floor. Unable to move too much, but can help! Open to offers — please text me: <a href="sms:2138084254" style="color:var(--accent); font-weight:700;">(213) 808-4254</a></div>
+  <div class="tag">Located on the 4th floor. Unable to move too much, but can help! Open to offers — please text me: <a href="sms:2138084254">(213) 808-4254</a></div>
 </header>
 
-<h2>Furniture & big stuff</h2>
-<div class="grid">
-  <div class="card"><a class="ph" href="img/a4.jpeg"><img src="img/a4.jpeg" alt="White metal queen bed frame" loading="lazy"></a><div class="info"><div class="name">Queen metal bed frame + box spring, white farmhouse style</div><div class="price">$110</div><div class="note">Solid, no rust. Headboard, footboard, rails.</div></div></div>
-  <div class="card"><a class="ph" href="img/a5.jpeg"><img src="img/a5.jpeg" alt="L-shaped white and gold desk" loading="lazy"></a><div class="info"><div class="name">L-shaped corner desk, white top / gold frame</div><div class="price">$70</div><div class="note">~59"×59", keyboard tray. WFH ready.</div></div></div>
-  <div class="card"><a class="ph" href="img/a6.jpeg"><img src="img/a6.jpeg" alt="Antique black dresser and matching 2-door cabinet" loading="lazy"></a><div class="info"><div class="name">Antique black set: 4-drawer dresser (glass knobs) + 2-door cabinet (iron latch)</div><div class="price">$225 together</div><div class="note">Or separately: dresser $150 · cabinet $125. Solid wood, chippy antique finish, casters on the dresser.</div></div></div>
-  <div class="card"><a class="ph" href="img/a10.jpeg"><img src="img/a10.jpeg" alt="Vanity desk and lighted mirror" loading="lazy"></a><div class="info"><div class="name">Vanity set: black desk + LED Hollywood mirror</div><div class="price">$75</div><div class="note">Lights work. Or mirror $50 / desk $30.</div></div></div>
-  <div class="card"><a class="ph" href="img/a12.jpeg"><img src="img/a12.jpeg" alt="Leaning floor mirror" loading="lazy"></a><div class="info"><div class="name">Full-length leaning mirror, whitewashed wood</div><div class="price">$60</div><div class="note">Big — roughly 5+ ft tall. No cracks.</div></div></div>
-  <div class="card"><a class="ph" href="img/b1.jpeg"><img src="img/b1.jpeg" alt="Mesh office chair" loading="lazy"></a><div class="info"><div class="name">Ergonomic mesh office chair</div><div class="price">$35</div><div class="note">Adjustable arms, rolls smooth, no tears.</div></div></div>
-  <div class="card"><a class="ph" href="img/b2.jpeg"><img src="img/b2.jpeg" alt="Nightstand with outlets" loading="lazy"></a><div class="info"><div class="name">Nightstand with built-in outlets + USB</div><div class="price">$40</div><div class="note">2 outlets + USB in the shelf. Rustic + industrial.</div></div></div>
-  <div class="card"><a class="ph" href="img/a17.jpeg"><img src="img/a17.jpeg" alt="White drop-leaf table with two chairs" loading="lazy"></a><div class="info"><div class="name">Vintage drop-leaf dinette table + 2 bentwood chairs</div><div class="price">$75</div><div class="note">Both leaves fold — fits anywhere from studio to full kitchen. Shabby-chic white, honest wear.</div></div></div>
-</div>
-
-<h2>Electronics</h2>
-<div class="grid">
-  <div class="card"><a class="ph" href="img/a2.jpeg"><img src="img/a2.jpeg" alt="Vizio smart TV" loading="lazy"></a><div class="info"><div class="name">Vizio smart TV, ~40–43"</div><div class="price">$100</div><div class="note">Works great. Wall-mount bracket +$15.</div></div></div>
-  <div class="card"><a class="ph" href="img/a3.jpeg"><img src="img/a3.jpeg" alt="Dell curved monitor on arm" loading="lazy"></a><div class="info"><div class="name">Dell S3222HN 32" curved monitor + gas-spring arm</div><div class="price">$120</div><div class="note">1080p · 75Hz · FreeSync · barely used (2022). Monitor alone $95. Arm alone is $30 new.</div></div></div>
-  <div class="card"><div class="noimg">📺 photo soon</div><div class="info"><div class="name">Apple TV 4K + Siri remote</div><div class="price">$45</div><div class="note">Works perfectly, current tvOS.</div></div></div>
-  <div class="card"><div class="noimg">📱 ask</div><div class="info"><div class="name">iPhone 16, 128GB, unlocked</div><div class="price">$489</div><div class="note">Good condition, clean IMEI, any carrier.</div></div></div>
-</div>
-
-<h2>Art — take the whole wall or any piece</h2>
-<div class="grid">
-  <div class="card"><a class="ph" href="img/wall-a.jpeg"><img src="img/wall-a.jpeg" alt="Gallery wall of framed art" loading="lazy"></a><div class="info"><div class="name">🖼️ THE WHOLE WALL — all the framed art, one deal</div><div class="price">$120</div><div class="note">All 8+ framed pieces + 2 picture ledges. Instant gallery wall. (Mirror & LOTR set priced separately.)</div><div class="thumbs"><a href="img/wall-b.jpeg"><img src="img/wall-b.jpeg" alt="" loading="lazy"></a><a href="img/b10.jpeg"><img src="img/b10.jpeg" alt="" loading="lazy"></a><a href="img/b9.jpeg"><img src="img/b9.jpeg" alt="" loading="lazy"></a><a href="img/c1.jpeg"><img src="img/c1.jpeg" alt="" loading="lazy"></a></div></div></div>
-  <div class="card"><a class="ph" href="img/b10.jpeg"><img src="img/b10.jpeg" alt="Tiger art in gold frame" loading="lazy"></a><div class="info"><div class="name">Tiger-in-a-parlor print, gold frame</div><div class="price">$35</div><div class="note">The most fun thing I own. ~24×30.</div></div></div>
-  <div class="card"><a class="ph" href="img/b9.jpeg"><img src="img/b9.jpeg" alt="Framed charcoal figure sketch" loading="lazy"></a><div class="info"><div class="name">Large framed figure sketch, black float frame</div><div class="price">$35</div><div class="note">~24×36 statement piece.</div></div></div>
-  <div class="card"><a class="ph" href="img/b11.jpeg"><img src="img/b11.jpeg" alt="Ballerina print in gold frame" loading="lazy"></a><div class="info"><div class="name">Ballerina print, ornate gold frame</div><div class="price">$25</div><div class="note">Degas vibes.</div></div></div>
-  <div class="card"><a class="ph" href="img/b13.jpeg"><img src="img/b13.jpeg" alt="Pastel figure sketch in gold frame" loading="lazy"></a><div class="info"><div class="name">Figure sketch, pastel on paper, slim gold frame</div><div class="price">$10</div><div class="note">~11×14.</div></div></div>
-  <div class="card"><a class="ph" href="img/b14.jpeg"><img src="img/b14.jpeg" alt="Pink line art in gold frame" loading="lazy"></a><div class="info"><div class="name">Blush line-art print, wide gold frame</div><div class="price">$10</div><div class="note">~11×14, stands or hangs.</div></div></div>
-  <div class="card"><a class="ph" href="img/c1.jpeg"><img src="img/c1.jpeg" alt="Marilyn print and picture ledges" loading="lazy"></a><div class="info"><div class="name">Marilyn Monroe print, red frame</div><div class="price">$10</div><div class="note">~11×14 b&w classic.</div></div></div>
-  <div class="card"><a class="ph" href="img/c5.jpeg"><img src="img/c5.jpeg" alt="Small vintage landscape" loading="lazy"></a><div class="info"><div class="name">Small vintage landscape, black frame</div><div class="price">$8</div><div class="note">Moody little tree scene.</div></div></div>
-  <div class="card"><a class="ph" href="img/c1.jpeg"><img src="img/c1.jpeg" alt="Black picture ledges" loading="lazy"></a><div class="info"><div class="name">2 black floating picture ledges (IKEA)</div><div class="price">$10</div><div class="note">~22" and ~45".</div></div></div>
-  <div class="card"><div class="noimg">🖼️ photo soon</div><div class="info"><div class="name">Vintage brass filigree frame, 8×10</div><div class="price">$20</div><div class="note">Ornate rococo corners.</div></div></div>
-  <div class="card"><a class="ph" href="img/b15.jpeg"><img src="img/b15.jpeg" alt="Framed black and white cat print" loading="lazy"></a><div class="info"><div class="name">Framed b&w cat print, silver beaded frame</div><div class="price">$12</div><div class="note">The cat has an upside-down cross on its forehead. It knows what it did.</div></div></div>
-  <div class="card"><a class="ph" href="img/b5.jpeg"><img src="img/b5.jpeg" alt="Gold octagon mirror" loading="lazy"></a><div class="info"><div class="name">Gold geometric octagon wall mirror</div><div class="price">$30</div><div class="note">~26", perfect condition.</div></div></div>
-  <div class="card"><a class="ph" href="img/a9.jpeg"><img src="img/a9.jpeg" alt="Lord of the Rings illustrated box set" loading="lazy"></a><div class="info"><div class="name">Lord of the Rings box set, Alan Lee illustrated</div><div class="price">$150</div><div class="note">3 hardcovers + slipcase, great condition. This exact set runs $150–265 used online in this shape.</div></div></div>
-</div>
-
-<h2>Kitchen, decor & more</h2>
-<div class="grid">
-  <div class="card"><a class="ph" href="img/a8.jpeg"><img src="img/a8.jpeg" alt="Le Creuset french press and mugs" loading="lazy"></a><div class="info"><div class="name">Le Creuset French press + 3 mugs (cream)</div><div class="price">$70</div><div class="note">Like new. $140+ retail.</div></div></div>
-  <div class="card"><a class="ph" href="img/a16.jpeg"><img src="img/a16.jpeg" alt="Instant Pot Duo Gourmet" loading="lazy"></a><div class="info"><div class="name">Instant Pot Duo Gourmet 9-in-1, 6 qt</div><div class="price">$45</div><div class="note">Pressure cook, slow cook, sous vide, yogurt + more. Works perfectly. $80 new.</div></div></div>
-  <div class="card"><a class="ph" href="img/c6.jpeg"><img src="img/c6.jpeg" alt="Vintage striped tumbler glasses" loading="lazy"></a><div class="info"><div class="name">Vintage tumbler collection (~13 glasses)</div><div class="price">$45</div><div class="note">Mid-century stripes & diamonds: pastel rings, yellow stripes, turquoise, fruit juice glasses. Ask about sets.</div><div class="thumbs"><a href="img/c6-2.jpeg"><img src="img/c6-2.jpeg" alt="" loading="lazy"></a><a href="img/c6-3.jpeg"><img src="img/c6-3.jpeg" alt="" loading="lazy"></a><a href="img/c6-4.jpeg"><img src="img/c6-4.jpeg" alt="" loading="lazy"></a></div></div></div>
-  <div class="card"><a class="ph" href="img/a15.jpeg"><img src="img/a15.jpeg" alt="Gold mesh pendant swag lamp" loading="lazy"></a><div class="info"><div class="name">Gold mesh pendant swag lamp (plug-in)</div><div class="price">$25</div><div class="note">No wiring needed — hangs from a hook, plugs into the wall. Works, Edison bulb included.</div><div class="thumbs"><a href="img/a15-2.jpeg"><img src="img/a15-2.jpeg" alt="" loading="lazy"></a></div></div></div>
-  <div class="card"><a class="ph" href="img/c7.jpeg"><img src="img/c7.jpeg" alt="Cream ceramic planter" loading="lazy"></a><div class="info"><div class="name">Cream ceramic planter, ~8"</div><div class="price">$15</div><div class="note">Mid-century style, footed.</div></div></div>
-  <div class="card"><a class="ph" href="img/c8.jpeg"><img src="img/c8.jpeg" alt="Cleaning supplies bundle" loading="lazy"></a><div class="info"><div class="name">Cleaning bundle: 2 Lysol sprays + Scrubbing Bubbles x3</div><div class="price">$15</div><div class="note">All full/near-full. $30+ retail.</div><div class="thumbs"><a href="img/c8-2.jpeg"><img src="img/c8-2.jpeg" alt="" loading="lazy"></a></div></div></div>
-  <div class="card"><a class="ph" href="img/b4.jpeg"><img src="img/b4.jpeg" alt="Stick lamp with marble base" loading="lazy"></a><div class="info"><div class="name">Stick lamp, marble base with USB port</div><div class="price">$18</div><div class="note">Charges your phone while it glows.</div></div></div>
-  <div class="card"><a class="ph" href="img/b7.jpeg"><img src="img/b7.jpeg" alt="Gold wire wall shelf" loading="lazy"></a><div class="info"><div class="name">Gold wire wall shelf, ~36"</div><div class="price">$15</div><div class="note">Screws included.</div></div></div>
-  <div class="card"><a class="ph" href="img/b8.jpeg"><img src="img/b8.jpeg" alt="Kipling navy backpack" loading="lazy"></a><div class="info"><div class="name">Kipling backpack, navy</div><div class="price">$25</div><div class="note">Clean inside, normal wear outside.</div><div class="thumbs"><a href="img/b8-2.jpeg"><img src="img/b8-2.jpeg" alt="" loading="lazy"></a><a href="img/b8-3.jpeg"><img src="img/b8-3.jpeg" alt="" loading="lazy"></a><a href="img/b8-4.jpeg"><img src="img/b8-4.jpeg" alt="" loading="lazy"></a><a href="img/b8-5.jpeg"><img src="img/b8-5.jpeg" alt="" loading="lazy"></a></div></div></div>
-  <div class="card"><a class="ph" href="img/a14.jpeg"><img src="img/a14.jpeg" alt="Shark Rotator Professional vacuum" loading="lazy"></a><div class="info"><div class="name">Shark Rotator Professional Lift-Away vacuum (NV501)</div><div class="price">$125</div><div class="note">Bought new in June — sells for $260 new. Barely used, runs perfectly. HEPA filter, lift-away pod. The best vacuum I've ever owned.</div></div></div>
-  <div class="card"><a class="ph" href="img/c2.jpeg"><img src="img/c2.jpeg" alt="White beaded serving platter" loading="lazy"></a><div class="info"><div class="name">Big white beaded serving platter ~18"</div><div class="price">$10</div><div class="note"></div></div></div>
-</div>
+<div id="sections"></div>
 
 <footer>
-  More items being added — tiny stuff too. Check back.<br>
-  Page updated daily · sold items get crossed off.
+  Tap any item for more photos & details.<br>
+  More items being added — tiny stuff too. Sold items get crossed off.
 </footer>
+
+<div id="ov">
+  <div id="sheet">
+    <div id="mhead"><button id="mclose" aria-label="Close">✕</button></div>
+    <div id="mstage">
+      <img id="mimg" alt="">
+      <button class="nav" id="prev" aria-label="Previous">‹</button>
+      <button class="nav" id="next" aria-label="Next">›</button>
+    </div>
+    <div id="mthumbs"></div>
+    <div id="mbody">
+      <div id="mname"></div>
+      <div id="mprice"></div>
+      <div id="mdetails"></div>
+      <div id="mcontact">Want it? Text <a href="sms:2138084254">(213) 808-4254</a> — first come, first served.</div>
+    </div>
+  </div>
+</div>
+
 <script>
-document.querySelectorAll('.card').forEach(function(c){
-  var n=c.querySelector('.name'), p=c.querySelector('.price'), i=c.querySelector('.info');
-  if(!n||!p||!i) return;
-  var a=document.createElement('a');
-  a.href='sms:+12138084254?&body='+encodeURIComponent('Hi! From the yard sale page — interested in: '+n.textContent+' ('+p.textContent+')');
-  a.textContent='💬 Text me about this';
-  a.className='claim';
-  i.appendChild(a);
+const ITEMS = [
+ // Furniture & big stuff
+ {s:"Furniture & big stuff", n:"Queen metal bed frame + box spring, white farmhouse style", p:"$110", note:"Solid, no rust.", d:"White powder-coated metal queen frame — spindle farmhouse style with ball finials. Headboard, footboard, and rails, plus the box spring. No rust, no squeaks. You disassemble and haul.", ph:["a4","a4-2","a4-3"]},
+ {s:"Furniture & big stuff", n:"Vintage drop-leaf dinette table + 2 bentwood chairs", p:"$75", note:"Both leaves fold.", d:"Shabby-chic white drop-leaf table — both leaves fold down so it fits a studio corner or opens up for four. Comes with 2 bentwood-style chairs. Honest wear in the paint; solid and sturdy.", ph:["a17"]},
+ {s:"Furniture & big stuff", n:"L-shaped corner desk, white top / gold frame", p:"$70", note:"~59\"×59\", keyboard tray.", d:"White and gold L-shaped corner desk, about 59\"×59\" with a slide-out keyboard tray. Modern, clean, sturdy — a full WFH setup in one piece.", ph:["a5","a5-2"]},
+ {s:"Furniture & big stuff", n:"Antique black set: 4-drawer dresser + 2-door cabinet", p:"$225", note:"Or dresser $150 / cabinet $125.", d:"Antique black set, sold together for $225 or separately: 4-drawer dresser with glass knobs and casters ($150) and 2-door cabinet with iron swing latch, ~36×36×14 ($125). Solid wood, chippy antique finish. Heavy — bring two people.", ph:["a6"]},
+ {s:"Furniture & big stuff", n:"Shark Rotator Professional Lift-Away vacuum (NV501)", p:"$125", note:"Bought new in June — $260 new.", d:"Bought new in June — sells for $260 new. Barely used, runs perfectly. HEPA filter, lift-away pod for stairs and upholstery, swivel steering, LED headlights. The best vacuum I've ever owned.", ph:["a14"], fit:"contain"},
+ {s:"Furniture & big stuff", n:"Vanity set: black desk + LED Hollywood mirror", p:"$75", note:"Or mirror $50 / desk $30.", d:"Black wood vanity desk with drawer + large venetian beveled mirror (~30×40\") with working stick-on Hollywood LED lights. $75 for the set, or mirror $50 / desk $30 separately.", ph:["a10","a10-2"]},
+ {s:"Furniture & big stuff", n:"Full-length leaning mirror, whitewashed wood", p:"$60", note:"5+ ft tall.", d:"Big whitewashed-wood leaning floor mirror, roughly 5+ feet tall. No cracks or chips. Lean it against a wall and your room instantly looks bigger.", ph:["a12","a12-2"]},
+ {s:"Furniture & big stuff", n:"Ergonomic mesh office chair", p:"$35", note:"Adjustable arms.", d:"Black mesh-back office chair with adjustable armrests, gas lift, smooth-rolling casters. No tears, no broken parts.", ph:["b1"]},
+ {s:"Furniture & big stuff", n:"Nightstand with built-in outlets + USB", p:"$40", note:"Power in the shelf.", d:"Rustic end table with a built-in power strip in the shelf: 2 outlets + USB. Cabinet below, black metal accent brackets, ~20×24×26. Top shows honest wear — priced for it.", ph:["b2","b2-2","b2-3"]},
+ // Electronics
+ {s:"Electronics", n:"Vizio smart TV, ~40–43\"", p:"$100", note:"Works great.", d:"Vizio smart LED TV, works great, clean unbroken screen, both feet included. Wall-mount bracket available for +$15.", ph:["a2"]},
+ {s:"Electronics", n:"Dell S3222HN 32\" curved monitor + gas-spring arm", p:"$120", note:"Barely used (2022).", d:"Dell S3222HN 32-inch curved monitor — 1080p, 75Hz, AMD FreeSync, high-contrast VA panel. Barely used, July 2022 build. Comes WITH a clamp-on gas-spring arm (full tilt/height/swivel). Monitor alone $95; the arm is $30 new.", ph:["a3","a3-2","a3-3"]},
+ {s:"Electronics", n:"Apple TV 4K + Siri remote", p:"$45", note:"Works perfectly.", d:"Apple TV 4K (2017) with Siri remote. Works perfectly, on current tvOS. Netflix, AirPlay, everything.", ph:[]},
+ {s:"Electronics", n:"iPhone 16, 128GB, unlocked", p:"$489", note:"Any carrier.", d:"iPhone 16, 128GB, good condition, clean IMEI, carrier-unlocked — works on any network. Text for details.", ph:[]},
+ // Art
+ {s:"Art — individual pieces", n:"Tiger-in-a-parlor print, gold frame", p:"$35", note:"~24×30.", d:"Colorful tiger seated in a pink Victorian parlor, brushed gold frame, ~24×30. The most fun thing I own — total statement piece.", ph:["b10","wall-b"]},
+ {s:"Art — individual pieces", n:"Large framed figure sketch, black float frame", p:"$35", note:"~24×36.", d:"Large charcoal figure line-art on cream ground, black floater frame, ~24×36. Minimalist statement piece.", ph:["b9","b9-2"]},
+ {s:"Art — individual pieces", n:"Ballerina print, ornate gold frame", p:"$25", note:"Degas vibes.", d:"Degas-style ballerinas in white tutus, warm tones, carved-look gold frame, ~12×18.", ph:["b11","wall-a"]},
+ {s:"Art — individual pieces", n:"Framed b&w cat print, silver beaded frame", p:"$12", note:"It knows what it did.", d:"Black and white photo print of a cat with an upside-down cross on its forehead, silver beaded frame. It knows what it did.", ph:["b15"]},
+ {s:"Art — individual pieces", n:"Figure sketch, pastel on paper, slim gold frame", p:"$10", note:"~11×14.", d:"Figure sketch in black and red pastel on textured paper, slim gold ornamented frame, ~11×14. Stands or hangs.", ph:["b13"]},
+ {s:"Art — individual pieces", n:"Blush line-art print, wide gold frame", p:"$10", note:"~11×14.", d:"Blush-pink oval line-art of a woman with a flower crown, wide gold frame, ~11×14. Cardboard easel back — stands or hangs.", ph:["b14"]},
+ {s:"Art — individual pieces", n:"Marilyn Monroe print, red frame", p:"$10", note:"~11×14.", d:"Classic black and white Marilyn Monroe print in a red mat and frame, ~11×14.", ph:["c1"]},
+ {s:"Art — individual pieces", n:"Small vintage landscape, black frame", p:"$8", note:"Moody little tree scene.", d:"Small sepia-toned tree landscape in a distressed black rounded frame, ~6×8.", ph:["c5"]},
+ {s:"Art — individual pieces", n:"2 black floating picture ledges (IKEA)", p:"$10", note:"~22\" and ~45\".", d:"Two black IKEA MOSSLANDA-style floating picture ledges, roughly 22\" and 45\". Minor edge wear.", ph:["c1"]},
+ {s:"Art — individual pieces", n:"Vintage brass filigree frame, 8×10", p:"$20", note:"Ornate rococo corners.", d:"Vintage cast-metal filigree frame in brass/gold tone with ornate rococo corners, 8×10 opening, ~11×14 overall. Wall-hung.", ph:[]},
+ {s:"Art — individual pieces", n:"Gold geometric octagon wall mirror", p:"$30", note:"~26\".", d:"Gold octagon accent mirror with geometric wire frame, ~26\". Perfect condition — glass and frame intact.", ph:["b5"]},
+ {s:"Art — individual pieces", n:"Lord of the Rings box set, Alan Lee illustrated", p:"$150", note:"Great condition.", d:"The Lord of the Rings 3-volume hardcover box set, fully illustrated by Alan Lee — the Houghton Mifflin slipcase edition ($125 retail). Books in great, clean, unmarked condition. This exact set runs $150–265 used online.", ph:["a9","a9-2","a9-3","a9-4","a9-5"]},
+ // Kitchen & more
+ {s:"Kitchen, decor & more", n:"Le Creuset French press + 3 mugs (cream)", p:"$70", note:"Like new.", d:"Le Creuset stoneware French press (cafetière) + 3 matching mugs in cream Meringue. Like new, no chips or cracks. Over $140 retail.", ph:["a8","a8-2","a8-3"]},
+ {s:"Kitchen, decor & more", n:"Instant Pot Duo Gourmet 9-in-1, 6 qt", p:"$45", note:"$80 new.", d:"Instant Pot Duo Gourmet 6-quart, 9-in-1: pressure cook, slow cook, sous vide, sauté, rice, yogurt, sterilize and more. Works perfectly. $80 new.", ph:["a16"]},
+ {s:"Kitchen, decor & more", n:"Vintage tumbler collection (~13 glasses)", p:"$45", note:"Ask about sets.", d:"Mid-century vintage glass collection, about 13 pieces: pastel-ring striped tumblers, yellow-and-white stripes, turquoise diamond-pattern highballs, and fruit-print juice glasses. These go for $8–15 per glass on Etsy — take the lot for $45, or ask about sets.", ph:["c6","c6-2","c6-3","c6-4"]},
+ {s:"Kitchen, decor & more", n:"Gold mesh pendant swag lamp (plug-in)", p:"$25", note:"No wiring needed.", d:"Gold wire-mesh oval pendant that hangs from a ceiling hook and plugs into a normal outlet — no wiring needed. Works; Edison spiral bulb included. Warm, glowy light.", ph:["a15","a15-2"]},
+ {s:"Kitchen, decor & more", n:"Stick lamp, marble base with USB port", p:"$18", note:"Charges your phone.", d:"Black stick lamp with white marble base and a built-in USB-A charging port. Works great; pull-chain switch. ~19\" tall.", ph:["b4","b4-2","b4-3"]},
+ {s:"Kitchen, decor & more", n:"Gold wire wall shelf, ~36\"", p:"$15", note:"Screws included.", d:"Gold metal wire grid wall shelf with upturned ends, roughly 36\" long × 8\" deep. Mounting screws included.", ph:["b7","b7-2"]},
+ {s:"Kitchen, decor & more", n:"Kipling backpack, navy", p:"$25", note:"Clean inside.", d:"Kipling crinkle-nylon backpack in navy — flap top with magnetic snaps over a drawstring main compartment, front zip pocket, interior zip pocket. Clean khaki lining; normal outer wear. ~13–14\" tall.", ph:["b8","b8-2","b8-3","b8-4","b8-5"]},
+ {s:"Kitchen, decor & more", n:"Cream ceramic planter, ~8\"", p:"$15", note:"Mid-century style.", d:"Cream/ivory glazed ceramic planter with a footed base, about 8\" across. Clean mid-century lines.", ph:["c7"]},
+ {s:"Kitchen, decor & more", n:"Cleaning bundle: 2 Lysol sprays + Scrubbing Bubbles x3", p:"$15", note:"$30+ retail.", d:"Move-out bonus bundle: 2 full 19-oz Lysol disinfectant sprays (crisp linen) + Scrubbing Bubbles Mega Shower Foamer + 2 multi-purpose disinfectant cans. All full or near-full. Over $30 retail.", ph:["c8","c8-2"]},
+ {s:"Kitchen, decor & more", n:"Big white beaded serving platter ~18\"", p:"$10", note:"", d:"Large cream-white ceramic oval serving platter with a beaded rim, roughly 18×14. Light utensil marks, no cracks.", ph:["c2","c2-2"]},
+];
+
+const secBox = document.getElementById('sections');
+const sections = [...new Set(ITEMS.map(i=>i.s))];
+sections.forEach(s=>{
+  const h = document.createElement('h2'); h.textContent = s; secBox.appendChild(h);
+  const g = document.createElement('div'); g.className='grid'; secBox.appendChild(g);
+  ITEMS.filter(i=>i.s===s).forEach(item=>{
+    const card = document.createElement('div'); card.className='card';
+    let phHtml;
+    if (item.ph.length) {
+      const more = item.ph.length>1 ? `<span class="more">${item.ph.length} 📷</span>` : '';
+      phHtml = `<div class="ph${item.fit==='contain'?' contain':''}"><img src="img/${item.ph[0]}.jpeg" alt="" loading="lazy">${more}</div>`;
+    } else {
+      phHtml = `<div class="noimg">📷 photo soon</div>`;
+    }
+    card.innerHTML = `${phHtml}<div class="info"><div class="name">${item.n}</div><div class="price">${item.p}</div><div class="note">${item.note}</div></div>`;
+    card.addEventListener('click',()=>openModal(item));
+    g.appendChild(card);
+  });
+});
+
+// modal
+const ov=document.getElementById('ov'), mimg=document.getElementById('mimg'),
+      mthumbs=document.getElementById('mthumbs'), mname=document.getElementById('mname'),
+      mprice=document.getElementById('mprice'), mdetails=document.getElementById('mdetails'),
+      prev=document.getElementById('prev'), next=document.getElementById('next');
+let cur=null, idx=0;
+function openModal(item){
+  cur=item; idx=0;
+  mname.textContent=item.n; mprice.textContent=item.p; mdetails.textContent=item.d;
+  mthumbs.innerHTML='';
+  if(item.ph.length){
+    item.ph.forEach((p,i)=>{
+      const t=document.createElement('img'); t.src=`img/${p}.jpeg`;
+      t.addEventListener('click',e=>{e.stopPropagation(); show(i);});
+      mthumbs.appendChild(t);
+    });
+    show(0);
+    document.getElementById('mstage').style.display='';
+    mthumbs.style.display = item.ph.length>1 ? 'flex' : 'none';
+    prev.style.display=next.style.display = item.ph.length>1 ? '' : 'none';
+  } else {
+    document.getElementById('mstage').style.display='none';
+    mthumbs.style.display='none';
+  }
+  ov.classList.add('open'); document.body.style.overflow='hidden';
+}
+function show(i){
+  idx=(i+cur.ph.length)%cur.ph.length;
+  mimg.src=`img/${cur.ph[idx]}.jpeg`;
+  [...mthumbs.children].forEach((t,j)=>t.classList.toggle('on',j===idx));
+}
+prev.addEventListener('click',e=>{e.stopPropagation(); show(idx-1);});
+next.addEventListener('click',e=>{e.stopPropagation(); show(idx+1);});
+function closeModal(){ ov.classList.remove('open'); document.body.style.overflow=''; }
+document.getElementById('mclose').addEventListener('click',closeModal);
+ov.addEventListener('click',e=>{ if(e.target===ov) closeModal(); });
+document.addEventListener('keydown',e=>{
+  if(!ov.classList.contains('open')) return;
+  if(e.key==='Escape') closeModal();
+  if(e.key==='ArrowLeft'&&cur&&cur.ph.length>1) show(idx-1);
+  if(e.key==='ArrowRight'&&cur&&cur.ph.length>1) show(idx+1);
 });
 </script>
 </body>
