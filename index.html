@@ -127,6 +127,7 @@ const ITEMS = [
  {s:"Art — individual pieces", n:"Handmade metal tiara — branches & butterflies", p:"$40", note:"Quality metal, crystals.", d:"Handmade tiara in quality gold-tone metal: branching twigs, leaves, butterflies, and crystal accents all the way around. Substantial, not costume-flimsy. Weddings, shoots, or just being royalty at home.", ph:["f1"]},
  // Kitchen & more
  {s:"Art — individual pieces", n:"Lord of the Rings box set, Alan Lee illustrated", p:"$150", note:"Great condition.", d:"The Lord of the Rings 3-volume hardcover box set, fully illustrated by Alan Lee — the Houghton Mifflin slipcase edition ($125 retail). Books in great, clean, unmarked condition. This exact set runs $150–265 used online.", ph:["a9","a9-2","a9-3","a9-4","a9-5"]},
+ {s:"Clothing & accessories", n:"New Balance sneakers, cream/tan (2002R line)", p:"$60", note:"Size/tag photo coming.", d:"New Balance cream/tan sneakers with layered mesh and suede — 2002R line ($130-160 retail, active resale market). Honest wear. Size confirmation coming — text me.", ph:["d12"]},
  {s:"Clothing & accessories", n:"Calvin Klein crossbody bag, black leather + gold chain", p:"$25", note:"$150 retail.", d:"Calvin Klein crossbody in black pebbled leather with gold chain-accent strap and gold logo hardware. Clean, good condition. Around $150 retail.", ph:["c11","c11-2"]},
  {s:"Clothing & accessories", n:"Vintage-style black croc mini handbag", p:"$18", note:"Gold turn-lock.", d:"Black croc-embossed mini handbag with top handle and gold turn-lock clasp, clean fabric-lined interior with zip pocket. Vintage lady-bag energy.", ph:["d11","d11-2","d11-3"]},
  {s:"Clothing & accessories", n:"Kipling backpack, navy", p:"$30", note:"Clean inside.", d:"Kipling crinkle-nylon backpack in navy — flap top with magnetic snaps over a drawstring main compartment, front zip pocket, interior zip pocket. Clean khaki lining; normal outer wear. ~13–14\" tall.", ph:["b8","b8-2","b8-3","b8-4","b8-5"]},
@@ -198,7 +199,7 @@ const ITEMS = [
 ];
 
 const secBox = document.getElementById('sections');
-const ORDER = ["Furniture & big stuff","Electronics","Kitchen","Art — individual pieces","Clothing & accessories","Home decor & more"];
+const ORDER = ["Furniture & big stuff","Electronics","Kitchen","Art — individual pieces","Home decor & more","Clothing & accessories"];
 const sections = ORDER.filter(s=>ITEMS.some(i=>i.s===s)).concat([...new Set(ITEMS.map(i=>i.s))].filter(s=>!ORDER.includes(s)));
 sections.forEach(s=>{
   const h = document.createElement('h2'); h.textContent = s; secBox.appendChild(h);
