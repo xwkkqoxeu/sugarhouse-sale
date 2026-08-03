@@ -62,7 +62,7 @@
 
 <footer>
   Tap any item for more photos & details.<br>
-  More items being added — tiny stuff too. Sold items get crossed off.
+  More items being added — tiny stuff too. Sold items come down, so if you can see it, it's available.
 </footer>
 
 <div id="ov">
@@ -96,7 +96,6 @@ const ITEMS = [
  {s:"Furniture & big stuff", n:"Full-length leaning mirror, whitewashed wood", p:"$45", note:"5+ ft tall.", d:"Big whitewashed-wood leaning floor mirror, roughly 5+ feet tall. No cracks or chips. Lean it against a wall and your room instantly looks bigger.", ph:["a12","a12-2"]},
  {s:"Furniture & big stuff", n:"Vintage drop-leaf dinette table + 2 bentwood chairs", p:"$75", note:"Both leaves fold.", d:"Shabby-chic white drop-leaf table — both leaves fold down so it fits a studio corner or opens up for four. Comes with 2 bentwood-style chairs. Honest wear in the paint; solid and sturdy.", ph:["a17","a17-2"]},
  {s:"Furniture & big stuff", n:"L-shaped corner desk, white top / gold frame", p:"$70", note:"~59\"×59\", keyboard tray.", d:"White and gold L-shaped corner desk, about 59\"×59\" with a slide-out keyboard tray. Modern, clean, sturdy — a full WFH setup in one piece.", ph:["a5","a5-2"]},
- {s:"Furniture & big stuff", sold:true, n:"Ergonomic mesh office chair", p:"$35", note:"Adjustable arms.", d:"Black mesh-back office chair with adjustable armrests, gas lift, smooth-rolling casters. No tears, no broken parts.", ph:["b1"]},
  {s:"Furniture & big stuff", n:"3-drawer metal file cabinet", p:"$10", note:"No key, one dent.", d:"White metal mobile file pedestal: two box drawers + one file drawer. No key for the lock and one dent — hence ten bucks. Drawers all work.", ph:["f4","f4-2","f4-3"]},
  {s:"Furniture & big stuff", n:"Wrought-iron patio bench", p:"$75", note:"Lattice back, scroll arms.", d:"Wrought-iron outdoor bench (~48\") with diamond-lattice back, scrollwork arms, and slat seat. Heavy and solid; seat slats show weathering — character, not damage.", ph:["a19"]},
  {s:"Furniture & big stuff", n:"Wrought-iron patio coffee table + chair, white", p:"$55", note:"", d:"White wrought-iron mesh-top patio coffee table (~32×20) + matching scrollwork chair — same vintage family as the bench. $55 for both. Light surface rust = patina.", ph:["f9"]},
@@ -111,7 +110,6 @@ const ITEMS = [
  {s:"Electronics", n:"Roborock Q5 robot vacuum + dock", p:"$90", note:"LiDAR mapping.", d:"Roborock Q5 robot vacuum with charging dock and power adapter — LiDAR navigation, app control with maps and no-go zones, strong suction. Works great; brush could use a de-hairing (I'll do it before pickup). The current Q5 model runs $160+ new.", ph:["e40","e40-2","e40-3"]},
  {s:"Electronics", n:"Logitech MK650 wireless keyboard + mouse", p:"$30", note:"$70 new.", d:"Logitech Signature MK650 combo: full-size wireless keyboard with palm rest and media keys + M650 silent wireless mouse. Works with Mac and PC. $70 new.", ph:["e17"]},
  // Art
- {s:"Art & books", sold:true, n:"Tiger-in-a-parlor print, gold frame", p:"$35", note:"~24×30.", d:"Colorful tiger seated in a pink Victorian parlor, brushed gold frame, ~24×30.", ph:["b10","wall-b"]},
  {s:"Art & books", n:"Large framed figure sketch, black float frame", p:"$35", note:"~24×36.", d:"Large charcoal figure line-art on cream ground, black floater frame, ~24×36. Minimalist statement piece.", ph:["b9","b9-2"]},
  {s:"Art & books", n:"Figure sketch, pastel on paper, slim gold frame", p:"$15", note:"~11×14.", d:"Figure sketch in black and red pastel on textured paper, slim gold ornamented frame, ~11×14. Stands or hangs.", ph:["b13"]},
  {s:"Art & books", n:"Blush line-art print, wide gold frame", p:"$10", note:"~11×14.", d:"Blush-pink oval line-art of a woman with a flower crown, wide gold frame, ~11×14. Cardboard easel back — stands or hangs.", ph:["b14"]},
@@ -148,7 +146,6 @@ const ITEMS = [
  {s:"Clothing & accessories", n:"'95' jersey tee, white/blue (XS)", p:"$6", note:"", d:"White v-neck football-style jersey tee with blue 95 and sleeve stripes, size XS.", ph:["h12"]},
  {s:"Clothing & accessories", n:"Oversized plaid button-up, navy/red", p:"$8", note:"", d:"Oversized navy and red plaid flannel-weight button-up with big chest pocket. Cozy boyfriend fit.", ph:["h13"]},
  {s:"Little things", n:"Yellow legal pads (~8)", p:"$4", note:"", d:"Stack of about eight yellow legal pads, most barely used.", ph:["m19"]},
- {s:"Little things", sold:true, n:"Casio MH-10M desk calculator", p:"$3", note:"Solar + battery.", d:"Casio MH-10M 10-digit desk calculator with cost/sell/margin keys. Solar powered.", ph:["m19-2"]},
  {s:"Little things", n:"Push pins, clear (box)", p:"$1", note:"", d:"A whole box of clear push pins.", ph:["d12-2x"]},
  {s:"Little things", n:"Paper clips + binder clips", p:"$1", note:"", d:"Container of paper clips, binder clips, and a staple strip.", ph:["m22"]},
  {s:"Little things", n:"Rubber bands (box)", p:"$1", note:"", d:"Box of rubber bands.", ph:["m23"]},
@@ -176,7 +173,6 @@ const ITEMS = [
  {s:"Clothing & accessories", n:"Kipling backpack, navy", p:"$30", note:"Clean inside.", d:"Kipling crinkle-nylon backpack in navy — flap top with magnetic snaps over a drawstring main compartment, front zip pocket, interior zip pocket. Clean khaki lining; normal outer wear. ~13–14\" tall.", ph:["b8","b8-2","b8-3","b8-4","b8-5"]},
  {s:"Kitchen", n:"Gourmia digital air fryer", p:"$35", note:"Works great.", d:"Gourmia stainless-front digital air fryer (~7 qt) with touch presets. Works perfectly.", ph:["m2","m2-2"]},
  {s:"Kitchen", n:"White dinnerware set (~12 pieces)", p:"$15", note:"", d:"White dinnerware: 4 bowls, 4 lunch plates, 4 dinner plates. Clean modern shape, light wear.", ph:["m1"]},
- {s:"Kitchen", sold:true, n:"Instant Pot Duo Gourmet 9-in-1, 6 qt", p:"$45", note:"$80 new.", d:"Instant Pot Duo Gourmet 6-quart, 9-in-1: pressure cook, slow cook, sous vide, sauté, rice, yogurt, sterilize and more. Works perfectly. $80 new.", ph:["a16"]},
  {s:"Kitchen", n:"FoodSaver vacuum sealer + 6 Kirkland bag rolls", p:"$50", note:"$150+ value.", d:"FoodSaver FM2000-series vacuum sealer (works great) plus SIX sealed Kirkland vacuum-bag rolls — that's $90+ in bags alone.", ph:["d13","d13-2"]},
  {s:"Kitchen", n:"ChefWave Milkmade — makes oat/almond/soy milk", p:"$30", note:"$240 new — priced to vanish.", d:"ChefWave Milkmade non-dairy milk maker — 6 programs (almond, oat, soy, cashew, macadamia, coconut), auto-clean, glass pitcher included. Works perfectly. $240 new.", ph:["c12","c12-2"]},
  {s:"Kitchen", n:"Elite Gourmet mini slow cooker, 1.5 qt", p:"$10", note:"Perfect for one.", d:"Elite Gourmet 1.5-quart mini slow cooker, white — low/high/warm settings, glass lid, removable ceramic crock. Works great. About $17 new.", ph:["c9"]},
@@ -200,7 +196,6 @@ const ITEMS = [
  {s:"Kitchen", n:"Tortilla warmer", p:"$5", note:"", d:"Terracotta-tone tortilla warmer, keeps a stack hot through the whole meal.", ph:["f6","f6-2"]},
  {s:"Kitchen", n:"Flatware set + organizer tray", p:"$30", note:"~80% of a $110 set.", d:"About 80% of a flatware set that was $110 new — everyday stainless plus a vintage hammered-handle set, lots of cute small spoons and forks, misc serving pieces, gold measuring spoons, chopsticks — all in the madesmart organizer tray, included.", ph:["e3"]},
  {s:"Kitchen", n:"Pantry canister set — 11 airtight containers", p:"$40", note:"POP-style, $100+ new.", d:"Eleven push-button airtight pantry canisters (OXO POP style) in graduated sizes, with chalkboard labels. This system is $100+ new. Contents not included.", ph:["e27"]},
- {s:"Kitchen", sold:true, n:"Bamboo foil & bag organizer set (5)", p:"$20", note:"$40+ new.", d:"Five bamboo drawer dispensers labeled Foil, Plastic, Gallon, Quart, Sandwich — organize the whole wrap drawer. Bags and foil started included.", ph:["e24"]},
  {s:"Kitchen", n:"Food storage container lot", p:"$10", note:"Snap-lock lids.", d:"Full drawer of food storage: snap-lock containers with teal seals, round and square, plus misc. Take the drawer's worth.", ph:["e25"]},
  {s:"Kitchen", n:"Wood lazy Susan turntable", p:"$5", note:"~14\".", d:"Solid wood lazy Susan turntable, ~14\". Spins smooth.", ph:["e5"]},
  {s:"Kitchen", n:"White shelf riser", p:"$8", note:"", d:"White wire shelf riser for pantry or cabinet — instant double-decker shelf.", ph:["e4"]},
@@ -233,7 +228,6 @@ const ITEMS = [
  {s:"Home decor & more", n:"Halloween decor lot", p:"$20", note:"Whole spooky box.", d:"Halloween lot: posable skeletons, black cat statue, metallic pumpkin jar, coffin 'Home Sweet Home' sign, spiders, ghost dish, pumpkin candle, velvet pumpkin, the pumpkin table runner, the pumpkin accent rug, AND a felt BOO ghost. Everything spooky, one price.", ph:["e26","e26-2","d10"]},
  {s:"Home decor & more", n:"AquaHomeGroup 15-stage shower filter + cartridges", p:"$20", note:"Softer water, better hair.", d:"AquaHomeGroup 15-stage chrome shower filter in box. One cartridge is lightly used — that one goes in right away — plus THREE sealed spares. A year+ of filtered showers; ~$50 retail for the set.", ph:["f18","f18-2"]},
  {s:"Home decor & more", n:"Christmas decor lot", p:"$25", note:"Whole holiday box.", d:"Christmas lot: basket of rose-gold and silver ornaments, star tree topper, two strings of lights, two unopened rolls of plaid gift wrap, bells, and a holiday foaming soap.", ph:["f19","f19-2","f19-3"]},
- {s:"Home decor & more", sold:true, n:"Foam roller, 36\"", p:"$10", note:"Full length.", d:"Black textured foam roller, full 36-inch length.", ph:["f20"]},
  {s:"Home decor & more", n:"Wireless remote light switch kit (Suraielec)", p:"$10", note:"No wiring.", d:"Suraielec wireless switch kit: plug-in outlet receiver + two stick-anywhere wireless switch plates. Control a lamp from the door with zero wiring. ~$25 new.", ph:["f21","f21-2","f21-3"]},
  {s:"Home decor & more", n:"Premium haircare duo: Kérastase + Oribe", p:"$25", note:"$95 retail together.", d:"Kérastase Genesis Fondant Renforçateur fortifying conditioner (200ml, mostly full) + Oribe Serene Scalp Oil Control treatment mist. $95 retail together — salon hair for $25. Or $15 each.", ph:["f22","f22-2"]},
  {s:"Home decor & more", n:"Bamboo drawer organizer trays (2)", p:"$8", note:"", d:"Two bamboo drawer organizer trays (one expandable-style). Kitchen, bathroom, or desk drawers.", ph:["f23"]},
@@ -268,7 +262,6 @@ const ITEMS = [
  {s:"Home decor & more", n:"Listerine Cool Mint, 1.5L (unopened)", p:"$4", note:"~$9 retail.", d:"Unopened 1.5-liter Listerine Cool Mint. Half retail because it's leaving in a box otherwise.", ph:["m18"]},
  {s:"Home decor & more", n:"Garnier micellar water, value size (unopened)", p:"$5", note:"~$10 retail.", d:"Unopened Garnier SkinActive micellar cleansing water, 23.7-oz value size. All-in-one makeup remover and cleanser.", ph:["m18-2"]},
  {s:"Home decor & more", n:"Softsoap refill jug", p:"$1", note:"", d:"Softsoap antibacterial hand soap refill jug (50 oz size, about half left).", ph:["m18-3"]},
- {s:"Home decor & more", sold:true, n:"Manduka PRO yoga mat, black", p:"$60", note:"$138 new, used ~5 times.", d:"Manduka PRO — the lifetime-warranty studio mat, $138 new. Used maybe five times; essentially new, full grip. A very nice carry bag is being located and comes with it when found.", ph:["f15"]},
  {s:"Home decor & more", n:"Giro Helios Spherical MIPS road helmet (M)", p:"$110", note:"NEVER used. $250 new.", d:"Giro Helios Spherical road helmet with MIPS Spherical tech, size Medium (55-59cm), matte white/silver fade — literally never used, zero rides, zero crashes. $250 new; new ones go $155-215 even on eBay. $110 gets you brand-new head protection at half price.", ph:["h9","h9-2","h9-3"]},
  {s:"Home decor & more", n:"Complete skateboard — shark deck", p:"$20", note:"Ready to ride.", d:"Complete skateboard: Jackson Pilz shark-graphic deck, metal trucks, checkered wheels. Normal wear, ready to ride.", ph:["d14","d14-2"]},
  {s:"Home decor & more", n:"Gorilla Ladders 2-step folding stool", p:"$18", note:"$30 new.", d:"Gorilla Ladders 2-step folding steel step stool with grab handle and grippy treads. Solid, folds flat.", ph:["d1","d1-2","d1-3"]},
@@ -283,7 +276,6 @@ const ITEMS = [
  {s:"Home decor & more", n:"Acrylic under-sink drawer organizers (3)", p:"$5 each", note:"+$7 for the stash inside.", d:"Three clear stacking drawer organizers (two mDesign-style drawers + a Brightroom stackable bin) — perfect under a bathroom sink. $5 each; add $7 and the contents come too: 625-count Q-tips and a DOZEN packs of Swisspers cotton rounds.", ph:["f13","f13-2","f13-3"]},
  {s:"Home decor & more", n:"Chrome hanging shower caddy", p:"$3", note:"", d:"Over-the-showerhead chrome caddy: two shelves, soap dish, razor hooks, cup holder.", ph:["e16"]},
  {s:"Home decor & more", n:"Lysol disinfectant sprays (2)", p:"$3 each", note:"19 oz, full.", d:"Two full 19-oz Lysol disinfectant sprays, crisp linen. $3 each, ~$8 each at the store.", ph:["c8-2"]},
- {s:"Home decor & more", sold:true, n:"Scrubbing Bubbles trio", p:"$5", note:"All three.", d:"Scrubbing Bubbles Mega Shower Foamer + 2 multi-purpose disinfectant cans. $5 for all three.", ph:["c8"]},
  {s:"Home decor & more", n:"Lysol toilet bowl gels (2)", p:"$3", note:"Both.", d:"Two Lysol Advanced toilet bowl cleaner gels. $3 for both.", ph:["c8-3"]},
 ];
 
