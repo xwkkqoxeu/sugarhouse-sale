@@ -6,14 +6,17 @@
 <style>
   @page { size: letter portrait; margin: 0.5in; }
   * { box-sizing:border-box; margin:0; }
-  body { font-family:-apple-system, "Helvetica Neue", sans-serif; color:#111; text-align:center; padding:24px; }
-  .sheet { max-width:7.5in; margin:0 auto; border:4px solid #111; border-radius:18px; padding:36px 28px; }
-  h1 { font-size:44pt; line-height:1.05; letter-spacing:-1px; }
+  body { font-family:-apple-system, "Helvetica Neue", sans-serif; color:#111; background:#fff; text-align:center; padding:24px; }
+  .sheet { max-width:7.5in; margin:0 auto; border:4px solid #111; border-radius:18px; padding:28px 26px; }
+  h1 { font-size:40pt; line-height:1.05; letter-spacing:-1px; }
   h2 { font-size:17pt; font-weight:600; margin-top:10px; }
-  .items { font-size:13pt; margin:16px auto 6px; line-height:1.5; }
-  img.qr { width:3.4in; height:3.4in; margin:18px 0 6px; }
+  .items { font-size:12.5pt; margin:14px auto 6px; line-height:1.45; }
+  img.qr { width:3in; height:3in; margin:14px 0 6px; }
   .scan { font-size:15pt; font-weight:700; }
-  .contact { margin-top:22px; font-size:15pt; }
+  .addr { margin-top:14px; font-size:16pt; font-weight:700; line-height:1.35; }
+  .addr .street { font-size:20pt; }
+  .pickup { margin-top:4px; font-size:13pt; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+  .contact { margin-top:18px; font-size:15pt; }
   .line { display:inline-block; border-bottom:3px solid #111; min-width:3in; height:1.2em; vertical-align:bottom; }
   .small { color:#444; font-size:10.5pt; margin-top:16px; }
   @media print { body { padding:0; } .noprint { display:none; } }
@@ -27,10 +30,12 @@
     Big Stuff · Little Stuff · Kitchen Things · Office Supplies ·
     Electronics · Art · Clothes · & More
   </div>
+  <div class="addr">📍 <span class="street">1235 E Wilmington Ave</span><br>Salt Lake City, UT 84106</div>
+  <div class="pickup">Pickup only · Cash or payment app</div>
   <img class="qr" src="qr.svg" alt="QR code to catalog">
   <div class="scan">📱 Scan to browse the full catalog with photos & prices</div>
   <div class="contact">Text me: <b>(213) 808-4254</b></div>
-  <div class="small">Cash or payment app · I can likely help move some things, not in the best physical health though!</div>
+  <div class="small">I can likely help move some things — not in the best physical health though!</div>
 </div>
 </body>
 </html>
