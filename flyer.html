@@ -2,40 +2,89 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Print flyer — Moving Sale</title>
+<title>Print flyer — Virtual Yard Sale</title>
 <style>
-  @page { size: letter portrait; margin: 0.5in; }
-  * { box-sizing:border-box; margin:0; }
-  body { font-family:-apple-system, "Helvetica Neue", sans-serif; color:#111; background:#fff; text-align:center; padding:24px; }
-  .sheet { max-width:7.5in; margin:0 auto; border:4px solid #111; border-radius:18px; padding:28px 26px; }
-  h1 { font-size:40pt; line-height:1.05; letter-spacing:-1px; }
-  h2 { font-size:17pt; font-weight:600; margin-top:10px; }
-  .items { font-size:12.5pt; margin:14px auto 6px; line-height:1.45; }
-  img.qr { width:3in; height:3in; margin:14px 0 6px; }
-  .scan { font-size:15pt; font-weight:700; }
-  .addr { margin-top:14px; font-size:16pt; font-weight:700; line-height:1.35; }
-  .addr .street { font-size:20pt; }
-  .pickup { margin-top:4px; font-size:13pt; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
-  .contact { margin-top:18px; font-size:15pt; }
-  .line { display:inline-block; border-bottom:3px solid #111; min-width:3in; height:1.2em; vertical-align:bottom; }
-  .small { color:#444; font-size:10.5pt; margin-top:16px; }
+  @page { size: letter portrait; margin: 0.4in; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    color:#000; background:#fff; text-align:center; padding:20px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet { max-width:7.7in; margin:0 auto; border:5px solid #000; padding:0 0 18px; }
+
+  .banner { background:#000; color:#fff; padding:14px 16px 16px; }
+  .banner .kicker { font-size:13pt; font-weight:700; letter-spacing:.42em; text-transform:uppercase; opacity:.92; }
+  .banner h1 {
+    font-size:52pt; line-height:.88; font-weight:800; letter-spacing:-2.5px;
+    text-transform:uppercase; margin-top:10px;
+  }
+  .banner .rule { width:58%; height:3px; background:#fff; margin:11px auto 9px; }
+  .banner .sub { font-size:17pt; font-weight:700; letter-spacing:.24em; text-transform:uppercase; }
+
+  .cats {
+    font-size:11.5pt; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+    line-height:1.7; padding:11px 26px 2px;
+  }
+  .cats span { white-space:nowrap; }
+  .dot { font-weight:400; padding:0 7px; }
+
+  .qrwrap { margin:10px auto 0; display:inline-block; border:4px solid #000; padding:10px 10px 7px; }
+  .qrwrap img { display:block; width:2.4in; height:2.4in; }
+  .qrwrap .cap { font-size:10.5pt; font-weight:800; letter-spacing:.2em; text-transform:uppercase; padding-top:8px; }
+  .scan { font-size:17pt; font-weight:800; letter-spacing:-.3px; margin-top:9px; }
+  .scan small { display:block; font-size:11.5pt; font-weight:600; letter-spacing:.06em; margin-top:5px; }
+
+  .addrbar { background:#000; color:#fff; margin-top:14px; padding:11px 14px; }
+  .addrbar .street { font-size:21pt; font-weight:800; letter-spacing:-.6px; text-transform:uppercase; line-height:1.15; }
+  .addrbar .city { font-size:13pt; font-weight:700; letter-spacing:.16em; text-transform:uppercase; margin-top:5px; }
+
+  .terms { font-size:12.5pt; font-weight:800; letter-spacing:.2em; text-transform:uppercase; margin-top:11px; }
+
+  .phone { margin-top:11px; }
+  .phone .lbl { font-size:12pt; font-weight:700; letter-spacing:.3em; text-transform:uppercase; }
+  .phone .num { font-size:30pt; font-weight:800; letter-spacing:-1px; line-height:1.1; margin-top:2px; }
+
+  .foot { font-size:10.5pt; line-height:1.45; color:#333; margin:11px 34px 0; }
+
   @media print { body { padding:0; } .noprint { display:none; } }
 </style>
 </head>
 <body>
-<div class="noprint" style="margin-bottom:14px; color:#666;">Press ⌘P to print — fits one letter page.</div>
+<div class="noprint" style="margin-bottom:14px; color:#777; font-size:11pt;">Press &#8984;P to print — fits one letter page.</div>
+
 <div class="sheet">
-  <h1>MOVING SALE<br>🏷️ EVERYTHING GOES</h1>
-  <div class="items">
-    Big Stuff · Little Stuff · Kitchen Things · Office Supplies ·
-    Electronics · Art · Clothes · & More
+  <div class="banner">
+    <div class="kicker">Everything Must Go</div>
+    <h1>Virtual<br>Yard Sale</h1>
+    <div class="rule"></div>
+    <div class="sub">150+ Items &nbsp;&middot;&nbsp; Priced to Move</div>
   </div>
-  <div class="addr">📍 <span class="street">1235 E Wilmington Ave</span><br>Salt Lake City, UT 84106</div>
-  <div class="pickup">Pickup only · Cash or payment app</div>
-  <img class="qr" src="qr.svg" alt="QR code to catalog">
-  <div class="scan">📱 Scan to browse the full catalog with photos & prices</div>
-  <div class="contact">Text me: <b>(213) 808-4254</b></div>
-  <div class="small">I can likely help move some things — not in the best physical health though!</div>
+
+  <div class="cats">
+    <span>Furniture</span><span class="dot">&middot;</span><span>Electronics</span><span class="dot">&middot;</span><span>Kitchen</span><span class="dot">&middot;</span><span>Art</span><span class="dot">&middot;</span><span>Books</span><br>
+    <span>Clothing</span><span class="dot">&middot;</span><span>Home Decor</span><span class="dot">&middot;</span><span>Tools</span><span class="dot">&middot;</span><span>Storage</span><span class="dot">&middot;</span><span>And More</span>
+  </div>
+
+  <div class="qrwrap">
+    <img src="qr.svg" alt="QR code to the online catalog">
+    <div class="cap">Scan Me</div>
+  </div>
+  <div class="scan">Browse the full catalog<small>Every item photographed, described, and priced</small></div>
+
+  <div class="addrbar">
+    <div class="street">1235 E Wilmington Ave</div>
+    <div class="city">Salt Lake City, UT 84106</div>
+  </div>
+
+  <div class="terms">Pickup Only &nbsp;&middot;&nbsp; Cash or Payment App</div>
+
+  <div class="phone">
+    <div class="lbl">Text Me</div>
+    <div class="num">(929) 505-6955</div>
+  </div>
+
+  <div class="foot">Open to offers. I can likely help move some things &mdash; not in the best physical health, so bring a hand for the heavy pieces.</div>
 </div>
 </body>
 </html>
