@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Yard Sale — 4th floor</title>
+<title>Yard Sale — 1235 E Wilmington Ave, SLC</title>
 <meta name="robots" content="noindex">
 <style>
   :root { --bg:#faf7f2; --card:#fff; --ink:#1e1b16; --sub:#6b6257; --accent:#b4552d; --good:#2d7a4f; }
@@ -11,7 +11,12 @@
   body { font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:var(--bg); color:var(--ink); padding:16px; max-width:900px; margin:0 auto; }
   header { text-align:center; padding:18px 8px 16px; }
   h1 { font-size:1.6rem; letter-spacing:.5px; }
-  .tag { color:var(--sub); margin-top:6px; font-size:.95rem; }
+  .addr { margin-top:8px; font-size:1rem; line-height:1.45; }
+  .tag { color:var(--sub); margin-top:8px; font-size:.95rem; }
+  #chips { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; padding:4px 0 6px; position:sticky; top:0; background:var(--bg); z-index:5; box-shadow:0 8px 10px -8px rgba(30,27,22,.18); }
+  #chips a { text-decoration:none; background:var(--card); border:1px solid #e4d8c6; color:var(--ink); font-size:.82rem; font-weight:600; padding:7px 13px; border-radius:999px; white-space:nowrap; }
+  #chips a:active { background:var(--accent); color:#fff; border-color:var(--accent); }
+  h2 { scroll-margin-top:60px; }
   .tag a { color:var(--accent); font-weight:700; }
   h2 { font-size:1.05rem; text-transform:uppercase; letter-spacing:.12em; color:var(--sub); margin:22px 4px 10px; }
   .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px; }
@@ -55,8 +60,11 @@
 <body>
 <header>
   <h1>🏷️ YARD SALE!!</h1>
-  <div class="tag">Located on the 4th floor. Unable to move too much, but can help! Open to offers — please text me: <a href="sms:2138084254">(213) 808-4254</a></div>
+  <div class="addr">Located at <b>1235 E Wilmington Avenue, SLC 84106</b><br>Items are <b>pickup only</b></div>
+  <div class="tag">Unable to move too much, but can help! Open to offers — please text me: <a href="sms:2138084254">(213) 808-4254</a></div>
 </header>
+
+<nav id="chips"></nav>
 
 <div id="sections"></div>
 
@@ -89,41 +97,119 @@ const ITEMS = [
  {s:"Furniture & big stuff", n:"Queen metal bed frame + box spring, white farmhouse style", p:"$110", note:"Solid, no rust.", d:"White powder-coated metal queen frame — spindle farmhouse style with ball finials. Headboard, footboard, and rails, plus the box spring. No rust, no squeaks. You disassemble and haul.", ph:["a4","a4-2","a4-3"]},
  {s:"Furniture & big stuff", n:"Nightstand with built-in outlets + USB", p:"$40", note:"Power in the shelf.", d:"Rustic solid-wood end table with a built-in power module in the shelf: 2 outlets + USB. Cabinet below, black metal accent brackets, ~20×24×26. Top shows honest wear — priced for it.", ph:["b2","b2-2","b2-3","b2-4"]},
  {s:"Furniture & big stuff", n:"Antique black set: 4-drawer dresser + 2-door cabinet", p:"$225", note:"Or dresser $150 / cabinet $125.", d:"Antique black set, sold together for $225 or separately: 4-drawer dresser with glass knobs and casters ($150) and 2-door cabinet with iron swing latch, ~36×36×14 ($125). Solid wood, chippy antique finish. Heavy — bring two people.", ph:["a6"]},
- {s:"Furniture & big stuff", n:"Vintage regency console cabinet, wire-mesh doors", p:"$115", note:"Parquet top, brass pulls.", d:"Vintage French-regency style console/media cabinet: parquet-inlay top, fluted columns, double doors with diamond wire mesh and gathered fabric panels, brass ring pulls, tapered legs with brass caps. ~48\"W. Interior shelf. A genuinely handsome piece.", ph:["d17","d17-2","d17-3"]},
  {s:"Furniture & big stuff", n:"Corner TV stand with glass doors", p:"$40", note:"43\"W × 24\"H.", d:"Rustic oak-finish corner TV stand/media console — two glass-front doors with black pulls, open side shelves, angled back to hug a corner, metal legs. 3 ft 7 in wide, 24 in tall.", ph:["f5"]},
- {s:"Furniture & big stuff", n:"Vanity set: black desk + LED Hollywood mirror", p:"$75", note:"Or mirror $50 / desk $30.", d:"Black wood vanity desk with drawer + large venetian beveled mirror (~30×40\") with working stick-on Hollywood LED lights. $75 for the set, or mirror $50 / desk $30 separately.", ph:["a10","a10-2"]},
- {s:"Furniture & big stuff", n:"Vintage drop-leaf dinette table + 2 bentwood chairs", p:"$75", note:"Both leaves fold.", d:"Shabby-chic white drop-leaf table — both leaves fold down so it fits a studio corner or opens up for four. Comes with 2 bentwood-style chairs. Honest wear in the paint; solid and sturdy.", ph:["a17","a17-2"]},
  {s:"Furniture & big stuff", n:"L-shaped corner desk, white top / gold frame", p:"$70", note:"~59\"×59\", keyboard tray.", d:"White and gold L-shaped corner desk, about 59\"×59\" with a slide-out keyboard tray. Modern, clean, sturdy — a full WFH setup in one piece.", ph:["a5","a5-2"]},
  {s:"Furniture & big stuff", n:"3-drawer metal file cabinet", p:"$10", note:"No key, one dent.", d:"White metal mobile file pedestal: two box drawers + one file drawer. No key for the lock and one dent — hence ten bucks. Drawers all work.", ph:["f4","f4-2","f4-3"]},
- {s:"Furniture & big stuff", n:"Wrought-iron patio bench", p:"$75", note:"Lattice back, scroll arms.", d:"Wrought-iron outdoor bench (~48\") with diamond-lattice back, scrollwork arms, and slat seat. Heavy and solid; seat slats show weathering — character, not damage.", ph:["a19"]},
- {s:"Furniture & big stuff", n:"Wrought-iron patio coffee table + chair, white", p:"$55", note:"", d:"White wrought-iron mesh-top patio coffee table (~32×20) + matching scrollwork chair — same vintage family as the bench. $55 for both. Light surface rust = patina.", ph:["f9"]},
- {s:"Furniture & big stuff", n:"Custom cat habitat — vintage ladder conversion", p:"$400", note:"One of a kind.", d:"Handbuilt cat habitat from a vintage solid-wood A-frame ladder: carpeted crow's-nest perch up top with wicker basket bed, second basket nook mid-level, carpeted scratch tunnel, sisal-wrapped climbing leg, and staggered platform steps the whole way up. ~6 ft tall. NEW baskets and basket liners included. Custom-commission quality — nobody else's cat has this.", ph:["g3","g3-2","g3-3"]},
+ {s:"Furniture & big stuff", n:"Wrought-iron patio bench", p:"$100", note:"Lattice back, scroll arms.", d:"Wrought-iron outdoor bench (~48\") with diamond-lattice back, scrollwork arms, and slat seat. Heavy and solid; seat slats show weathering — character, not damage.", ph:["a19"]},
+ {s:"Furniture & big stuff", n:"Wrought-iron patio coffee table + chair, white", p:"$40", note:"", d:"White wrought-iron mesh-top patio coffee table (~32×20) + matching scrollwork chair — same vintage family as the bench. $55 for both. Light surface rust = patina.", ph:["f9"]},
+ {s:"Furniture & big stuff", n:"Custom cat habitat — vintage ladder conversion", p:"$225", note:"One of a kind.", d:"Handbuilt cat habitat from a vintage solid-wood A-frame ladder: carpeted crow's-nest perch up top with wicker basket bed, second basket nook mid-level, carpeted scratch tunnel, sisal-wrapped climbing leg, and staggered platform steps the whole way up. ~6 ft tall. NEW baskets and basket liners included. Custom-commission quality — nobody else's cat has this.", ph:["g3","g3-2","g3-3"]},
  {s:"Furniture & big stuff", n:"Shark Rotator Professional Lift-Away vacuum (NV501)", p:"$125", note:"Bought new in June — $260 new.", d:"Bought new in June — sells for $260 new. Barely used, runs perfectly. HEPA filter, lift-away pod for stairs and upholstery, swivel steering, LED headlights. The best vacuum I've ever owned.", ph:["a14"], fit:"contain"},
+ {s:"Furniture & big stuff", n:"Gold geometric octagon wall mirror", p:"$45", note:"~26\".", d:"Gold octagon accent mirror with geometric wire frame, ~26\". Perfect condition — glass and frame intact.", ph:["b5"]},
  // Electronics
- {s:"Electronics", n:"Dell S3222HN 32\" curved monitor + gas-spring arm", p:"$120", note:"Barely used (2022).", d:"Dell S3222HN 32-inch curved monitor — 1080p, 75Hz, AMD FreeSync, high-contrast VA panel. Barely used, July 2022 build — shown powered on. Comes WITH a clamp-on gas-spring arm (full tilt/height/swivel) AND the original Dell stand. Monitor alone $95; the arm is $30 new.", ph:["a3","a3-0","a3-2","a3-3","a3-4"]},
- {s:"Electronics", n:"Acer KG271 27\" gaming monitor — 144Hz", p:"$35", note:"Powered-on proof.", d:"Acer KG271 27-inch gaming monitor: 1080p, 144Hz, 1ms, AMD FreeSync — DisplayPort, HDMI, and DVI inputs. Shown powered on, works great. The budget 144Hz classic.", ph:["f8","f8-2"]},
+ {s:"Electronics", n:"Dell S3222HN 32\" curved monitor + gas-spring arm", p:"$120", note:"Barely used (2022).", d:"Dell S3222HN 32-inch curved monitor — 1080p, 75Hz, AMD FreeSync, high-contrast VA panel. Barely used, July 2022 build. Comes WITH a clamp-on gas-spring arm (full tilt/height/swivel) AND the original Dell stand. Monitor alone $95; the arm is $30 new.", ph:["a3","a3-0","a3-2","a3-3","a3-4"]},
+ {s:"Electronics", n:"Acer KG271 27\" gaming monitor — 144Hz", p:"$35", note:"1080p · 144Hz · 1ms.", d:"Acer KG271 27-inch gaming monitor: 1080p, 144Hz, 1ms, AMD FreeSync — DisplayPort, HDMI, and DVI inputs. Works great. The budget 144Hz classic.", ph:["f8","f8-2"]},
  {s:"Electronics", n:"Logitech MK650 wireless keyboard + mouse", p:"$30", note:"$70 new.", d:"Logitech Signature MK650 combo: full-size wireless keyboard with palm rest and media keys + M650 silent wireless mouse. Works with Mac and PC. $70 new.", ph:["e17"]},
- // Art
- {s:"Art & books", n:"Large framed figure sketch, black float frame", p:"$35", note:"~24×36.", d:"Large charcoal figure line-art on cream ground, black floater frame, ~24×36. Minimalist statement piece.", ph:["b9","b9-2"]},
- {s:"Art & books", n:"Figure sketch, pastel on paper, slim gold frame", p:"$15", note:"~11×14.", d:"Figure sketch in black and red pastel on textured paper, slim gold ornamented frame, ~11×14. Stands or hangs.", ph:["b13"]},
- {s:"Art & books", n:"Blush line-art print, wide gold frame", p:"$10", note:"~11×14.", d:"Blush-pink oval line-art of a woman with a flower crown, wide gold frame, ~11×14. Cardboard easel back — stands or hangs.", ph:["b14"]},
- {s:"Art & books", n:"Hand & lips line art, chunky wood frame", p:"$10", note:"~8×10.", d:"White-on-charcoal line drawing of a hand holding lips, in a chunky honey-wood frame, ~8×10 overall. Stands or hangs.", ph:["e33"]},
- {s:"Art & books", n:"Ballerina print, ornate gold frame", p:"$25", note:"", d:"Degas-style ballerinas in white tutus, warm tones, carved-look gold frame, ~12×18.", ph:["b11","wall-a"]},
- {s:"Art & books", n:"Marilyn Monroe print, red mat, glass clip frame", p:"$20", note:"~11×14.", d:"The classic Seven Year Itch subway-grate shot, black and white, in a red mat with a frameless glass clip frame, ~11×14.", ph:["b16"]},
- {s:"Art & books", n:"Vintage pin-up in ornate pewter frame", p:"$20", note:"Frame is the prize.", d:"Vintage devil-girl pin-up print in a beautiful ornate pewter scroll frame with easel back. The glass is broken — but in a really cool way. Handle by the frame; the frame alone is worth it.", ph:["f2"]},
- {s:"Art & books", n:"\"Earth Sucks\" framed photo print", p:"$12", note:"Ornate vintage frame.", d:"Photo print of a woman in green cat-eye glasses and an 'EARTH SUCKS' shirt, in an ornate carved dark-gold vintage frame, ~5×7. Weird and wonderful.", ph:["d3"]},
- {s:"Art & books", n:"Framed b&w cat print, silver beaded frame", p:"$12", note:"Silver beaded frame.", d:"Black and white photo print of a cat with an upside-down cross on its forehead, silver beaded frame.", ph:["b15"]},
- {s:"Art & books", n:"Small vintage landscape, black frame", p:"$8", note:"Moody little tree scene.", d:"Small sepia-toned tree landscape in a distressed black rounded frame, ~6×8.", ph:["c5"]},
- {s:"Art & books", n:"Vintage brass filigree frame, 8×10", p:"$20", note:"Ornate rococo corners.", d:"Vintage cast-metal filigree frame in brass/gold tone with ornate rococo corners, 8×10 opening, ~11×14 overall. Wall-hung. (Frame only — the photo shown isn't included.)", ph:["b17"]},
- {s:"Art & books", n:"Rustic letter 'T' block", p:"$5", note:"", d:"Whitewashed wood block with black metal letter T.", ph:["e18"]},
- {s:"Art & books", n:"Gold geometric octagon wall mirror", p:"$45", note:"~26\".", d:"Gold octagon accent mirror with geometric wire frame, ~26\". Perfect condition — glass and frame intact.", ph:["b5"]},
- {s:"Art & books", n:"Handmade metal tiara — branches & butterflies", p:"$40", note:"Quality metal, crystals.", d:"Handmade tiara in quality gold-tone metal: branching twigs, leaves, butterflies, and crystal accents all the way around. Substantial, not costume-flimsy.", ph:["f1","f1-2"]},
- // Kitchen & more
- {s:"Art & books", n:"Lord of the Rings box set, Alan Lee illustrated", p:"$150", note:"Great condition.", d:"The Lord of the Rings 3-volume hardcover box set, fully illustrated by Alan Lee — the Houghton Mifflin slipcase edition ($125 retail). Books in great, clean, unmarked condition. This exact set runs $150–265 used online.", ph:["a9","a9-2","a9-3","a9-4","a9-5"]},
- {s:"Art & books", n:"The Silmarillion — Ted Nasmith illustrated hardcover", p:"$25", note:"Houghton Mifflin.", d:"J.R.R. Tolkien's The Silmarillion, the illustrated hardcover edition with Ted Nasmith's paintings (Houghton Mifflin). Blue cloth boards with gilt spine, clean and tight. No dust jacket.", ph:["k3","k3-2"]},
- {s:"Art & books", n:"An Encyclopedia of Tolkien — leather-bound", p:"$15", note:"David Day.", d:"An Encyclopedia of Tolkien by David Day — the leather-bound Canterbury Classics edition with embossed cover and ouroboros spine. Beautiful shelf piece.", ph:["k2","k2-2"]},
- {s:"Art & books", n:"Bella White — Just Like Leaving (vinyl LP)", p:"$15", note:"Rounder Records.", d:"Bella White's 'Just Like Leaving' on vinyl (Rounder) — gorgeous modern bluegrass. Sleeve has some sticker scars on the back; record plays beautifully.", ph:["m21","m21-2"]},
- {s:"Art & books", n:"Chronicles of Narnia — books 1-3", p:"$8", note:"All three.", d:"C.S. Lewis paperbacks: The Magician's Nephew, The Lion the Witch and the Wardrobe, and The Horse and His Boy. Clean copies, $8 for all three.", ph:["k1","k1-2","k1-3","k1-4"]},
+ // Kitchen
+ {s:"Kitchen", n:"White dinnerware set (~12 pieces)", p:"$8", note:"", d:"White dinnerware: 4 bowls, 4 lunch plates, 4 dinner plates. Clean modern shape, light wear.", ph:["m1"]},
+ {s:"Kitchen", n:"FoodSaver vacuum sealer + 6 Kirkland bag rolls", p:"$50", note:"$150+ value.", d:"FoodSaver FM2000-series vacuum sealer (works great) plus SIX sealed Kirkland vacuum-bag rolls — that's $90+ in bags alone.", ph:["d13","d13-2"]},
+ {s:"Kitchen", n:"ChefWave Milkmade — makes oat/almond/soy milk", p:"$30", note:"$240 new — priced to vanish.", d:"ChefWave Milkmade non-dairy milk maker — 6 programs (almond, oat, soy, cashew, macadamia, coconut), auto-clean, glass pitcher included. Works perfectly. $240 new.", ph:["c12","c12-2"]},
+ {s:"Kitchen", n:"Elite Gourmet mini slow cooker, 1.5 qt", p:"$10", note:"Perfect for one.", d:"Elite Gourmet 1.5-quart mini slow cooker, white — low/high/warm settings, glass lid, removable ceramic crock. Works great. About $17 new.", ph:["c9"]},
+ {s:"Kitchen", n:"Glass electric kettle", p:"$15", note:"Fast boil.", d:"Glass and stainless electric kettle, 1.8L with cup markings, cordless pour. Boils fast.", ph:["e28"]},
+ {s:"Kitchen", n:"Cuisinart coffee/spice grinder", p:"$12", note:"Stainless.", d:"Cuisinart stainless electric blade grinder for coffee beans and spices. Works great.", ph:["c13","c13-2"]},
+ {s:"Kitchen", n:"Le Creuset French press + 3 mugs (cream)", p:"$70", note:"Like new.", d:"Le Creuset stoneware French press (cafetière) + 3 matching mugs in cream Meringue. Like new, no chips or cracks. Over $140 retail.", ph:["a8","a8-2","a8-3"]},
+ {s:"Kitchen", n:"Happy Camper enamel-style mug", p:"$4", note:"", d:"Red 'Happy Camper' camp mug.", ph:["f14"]},
+ {s:"Kitchen", n:"Victoria C&E bone china teacup + saucer", p:"$18", note:"England, teal + gold.", d:"Victoria C&E English bone china teacup and saucer — teal with gold chintz pattern, gold handle and trim.", ph:["e42","e42-3","e42-2"]},
+ {s:"Kitchen", n:"Vintage tumbler collection (~11 glasses)", p:"$55", note:"1980s vintage. Ask about sets.", d:"Vintage glass collection from the 1980s, about 11 pieces: pastel-ring striped tumblers, yellow-and-white stripes, and turquoise diamond-pattern highballs. These go for $8–15 per glass on Etsy — take the lot for $55, or ask about sets.", ph:["c6","c6-5","c6-6","c6-2"], fit:"contain"},
+ {s:"Kitchen", n:"Vintage fruit juice glasses — pair", p:"$8", note:"Or $5 each.", d:"Two 1980s vintage juice/shot glasses: one with oranges and strawberries, one with tomatoes on the vine. $8 for the pair or $5 each.", ph:["f12","c6-3","c6-4"]},
+ {s:"Kitchen", n:"Patterned bowl set — 13 colorful bowls", p:"$15", note:"", d:"Thirteen colorful patterned rice/dip bowls — florals, dots, geometrics, every one different. $15 for all.", ph:["e12"]},
+ {s:"Kitchen", n:"Blue pottery pie dish + koi plate", p:"$15", note:"", d:"Blue scalloped-edge stoneware pie dish with carved swirl center + blue-and-white hand-painted koi fish plate. Kitchen art.", ph:["e14","e14-2"]},
+ {s:"Kitchen", n:"White oval serving platter, beaded rim", p:"$10", note:"", d:"White ceramic oval serving platter with a beaded rim — clean, no marks. (Yes, there are two platters. Different platters. Both great.)", ph:["f11"]},
+ {s:"Kitchen", n:"Big white beaded serving platter ~18\"", p:"$10", note:"", d:"Large cream-white ceramic oval serving platter with a beaded rim, roughly 18×14. Light utensil marks, no cracks.", ph:["c2","c2-2"]},
+ {s:"Kitchen", n:"Tortilla warmer", p:"$5", note:"", d:"Terracotta-tone tortilla warmer, keeps a stack hot through the whole meal.", ph:["f6","f6-2"]},
+ {s:"Kitchen", n:"Wood lazy Susan turntable", p:"$5", note:"~14\".", d:"Solid wood lazy Susan turntable, ~14\". Spins smooth.", ph:["e5"]},
+ {s:"Kitchen", n:"Brita UltraMax dispenser + 8 sealed filters", p:"$30", note:"$75+ retail together.", d:"Brita UltraMax 18-cup fridge dispenser with spigot PLUS 8 sealed replacement filters — that's a year of clean water. $75+ retail together.", ph:["d9-3","d9-4","d9","d9-2"]},
+ {s:"Kitchen", n:"Kirkland Stretch-Tite plastic wrap, 750 sq ft", p:"$8", note:"Unopened.", d:"Kirkland Signature Stretch-Tite plastic food wrap, 750 square feet, unopened, slide cutter included.", ph:["d6"]},
+ {s:"Kitchen", n:"Salad spinner", p:"$3", note:"", d:"Pull-cord salad spinner, green basket, doubles as a colander. Clean.", ph:["e34"]},
+ {s:"Kitchen", n:"Optimum Nutrition Gold Standard Whey (partial bag)", p:"$5", note:"Extreme Milk Chocolate.", d:"Optimum Nutrition Gold Standard 100% Whey, Extreme Milk Chocolate, 5.64 lb bag with some left in it. $5 and it's yours — protein's protein.", ph:["e9"]},
+ // Containers & baskets
+ {s:"Containers & baskets", n:"Pantry canister set — 11 airtight containers", p:"$40", note:"POP-style, $100+ new.", d:"Eleven push-button airtight pantry canisters (OXO POP style) in graduated sizes, with chalkboard labels. This system is $100+ new. Contents not included.", ph:["e27"]},
+ {s:"Containers & baskets", n:"Stackable thick glass canister set (4)", p:"$20", note:"Or $5 each.", d:"Four square stackable thick-glass canisters with gasket lids (Anchor Hocking style). $20 for all four, or $5 each.", ph:["d15","d15-2"]},
+ {s:"Containers & baskets", n:"Food storage container lot", p:"$10", note:"Snap-lock lids.", d:"Full drawer of food storage: snap-lock containers with teal seals, round and square, plus misc. Take the drawer's worth.", ph:["e25"]},
+ {s:"Containers & baskets", n:"Commercial food tubs (4) + rolling caddies (2) — set", p:"$48 set", note:"Tubs $8 · caddies $12.", d:"FOUR Costco Business Center commercial round food tubs (~12 qt) with lids + TWO black rolling plant caddies with locking casters — the caddies are really nice. $48 takes the whole set, or split: tubs $8 each, caddies $12 each.", ph:["e2"]},
+ {s:"Containers & baskets", n:"Vittles Vault pet food containers — pair", p:"$30", note:"$40 each new.", d:"Two Gamma2 Vittles Vault airtight pet food containers (~30 lb size each), screw-on lids. $40 each new — $30 for both. Honest note: one has a small crack on the ridge; doesn't affect the seal-screw lid.", ph:["e31"]},
+ {s:"Containers & baskets", n:"Coffee filters canister + filters", p:"$8", note:"Bamboo lid.", d:"Black chalkboard-style 'Coffee Filters' canister with bamboo lid, stack of basket filters included.", ph:["f25","f25-2"]},
+ {s:"Containers & baskets", n:"Penny candy jar (green tea included)", p:"$8", note:"", d:"Classic glass penny-candy jar with brushed metal lid — currently full of Kirkland green tea bags, which come with it.", ph:["e35"]},
+ {s:"Containers & baskets", n:"3 white tea tins", p:"$8", note:"Chalkboard labels.", d:"Three white metal tea tins with inner lids, one with chalkboard label. Airtight-ish, cute.", ph:["e10"]},
+ {s:"Containers & baskets", n:"Bamboo foil & bag organizer set (5)", p:"$20", note:"$40+ new.", d:"Five bamboo drawer dispensers labeled Foil, Plastic, Gallon, Quart, Sandwich — organize the whole wrap drawer. Bags and foil started included.", ph:["e24"]},
+ {s:"Containers & baskets", n:"Glass pump dispensers (2)", p:"$6 each", note:"Or $10 both.", d:"Two glass pump dispensers with chalkboard labels and chrome pumps. One has only ever held Listerine, the other only micellar water. $6 each or $10 for both.", ph:["e47","e47-2"]},
+ {s:"Containers & baskets", n:"Brightroom woven bins (2), gray", p:"$8", note:"Both.", d:"Two gray Brightroom woven-texture plastic bins: tall flexible tote + open storage basket. $8 for both.", ph:["e53"]},
+ {s:"Containers & baskets", n:"Y-weave storage baskets (2), gray", p:"$6", note:"Both.", d:"Two gray Y-weave storage baskets (Brightroom style). $6 for the pair.", ph:["m13","m13-2"]},
+ {s:"Containers & baskets", n:"Cotton rope baskets (2), white", p:"$8", note:"Both.", d:"Two white cotton rope storage baskets. Soft-sided, sturdy, nursery-cute.", ph:["m11","m11-2"]},
+ {s:"Containers & baskets", n:"Black wire basket, wood base", p:"$10", note:"", d:"Round black wire basket with solid wood base and coil handles. Blankets, laundry, firewood.", ph:["e32"]},
+ {s:"Containers & baskets", n:"Sterilite 18-gal tote, red", p:"$5", note:"With lid.", d:"Red Sterilite 18-gallon storage tote with lid.", ph:["m9"]},
+ {s:"Containers & baskets", n:"Igloo 28-qt cooler, teal", p:"$10", note:"", d:"Igloo 28-quart hard cooler in teal with carry handle. Needs a wipe-down, works perfectly.", ph:["e20"]},
+ {s:"Containers & baskets", n:"Igloo Playmate cooler", p:"$12", note:"The classic.", d:"Classic Igloo Playmate 16-qt cooler with the side-swing lid.", ph:["m5","m5-2"]},
+ {s:"Containers & baskets", n:"Ozark Trail soft cooler backpack", p:"$20", note:"24-can size.", d:"Ozark Trail leak-tight soft cooler, ~24-can capacity, welded seams, zip pocket, shoulder strap.", ph:["e21"]},
+ {s:"Containers & baskets", n:"Gold wire utensil holder", p:"$6", note:"", d:"Gold wire utensil holder / catch-all cup.", ph:["m12"]},
+ {s:"Containers & baskets", n:"White diamond-pattern brush holder", p:"$5", note:"", d:"Small white ceramic holder with embossed diamond lattice pattern — makeup brushes, pens, whatever fits.", ph:["e43","e43-2"]},
+ {s:"Containers & baskets", n:"Small gray wastebasket", p:"$5", note:"", d:"Small gray plastic wastebasket, bathroom/desk size.", ph:["e45"]},
+ // Books
+ {s:"Books", n:"Lord of the Rings box set, Alan Lee illustrated", p:"$75", note:"Great condition.", d:"The Lord of the Rings 3-volume hardcover box set, fully illustrated by Alan Lee — the Houghton Mifflin slipcase edition ($125 retail). Books in great, clean, unmarked condition. This exact set runs $150–265 used online.", ph:["a9","a9-2","a9-3","a9-4","a9-5"]},
+ {s:"Books", n:"The Silmarillion — Ted Nasmith illustrated hardcover", p:"$25", note:"Houghton Mifflin.", d:"J.R.R. Tolkien's The Silmarillion, the illustrated hardcover edition with Ted Nasmith's paintings (Houghton Mifflin). Blue cloth boards with gilt spine, clean and tight. No dust jacket.", ph:["k3","k3-2"]},
+ {s:"Books", n:"An Encyclopedia of Tolkien — leather-bound", p:"$15", note:"David Day.", d:"An Encyclopedia of Tolkien by David Day — the leather-bound Canterbury Classics edition with embossed cover and ouroboros spine. Beautiful shelf piece.", ph:["k2","k2-2"]},
+ {s:"Books", n:"Chronicles of Narnia — books 1-3", p:"$8", note:"All three.", d:"C.S. Lewis paperbacks: The Magician's Nephew, The Lion the Witch and the Wardrobe, and The Horse and His Boy. Clean copies, $8 for all three.", ph:["k1","k1-2","k1-3","k1-4"]},
+ // Home decor & more
+ {s:"Home decor & more", n:"Gold mesh pendant swag lamp (plug-in)", p:"$40", note:"No wiring needed.", d:"Gold wire-mesh oval pendant that hangs from a ceiling hook and plugs into a normal outlet — no wiring needed. Works; Edison spiral bulb included. Warm, glowy light.", ph:["a15","a15-2"]},
+ {s:"Home decor & more", n:"Stick lamp, marble base with USB port", p:"$10", note:"Charges your phone.", d:"Black stick lamp with white marble base and a built-in USB-A charging port. Works great; pull-chain switch. ~19\" tall.", ph:["b4","b4-2","b4-3"]},
+ {s:"Home decor & more", n:"Wall sconces, black + linen shade — pair", p:"$15", note:"Both for $15.", d:"Two matching black metal wall sconces with white linen shades. Hardwired — bring someone handy to swap them off the wall, or use a hardwire-to-plug kit.", ph:["e29"]},
+ {s:"Home decor & more", n:"Outdoor string lights — 2 strands", p:"$25", note:"Edison bulbs.", d:"Two strands of commercial-style outdoor string lights with Edison bulbs (~48 ft total). Currently hung on the patio — I'll have them down and coiled for pickup.", ph:["e19","e19-2"]},
+ {s:"Home decor & more", n:"IKEA TÄRNABY lantern lamp", p:"$8", note:"Dimmable.", d:"IKEA TÄRNABY table lamp — vintage kerosene-lantern look with glass shade and dimmer knob. Cozy amber glow.", ph:["e46","e46-2"]},
+ {s:"Home decor & more", n:"Wireless remote light switch kits (2) — Suraielec", p:"$11", note:"Both for $11. No wiring.", d:"TWO Suraielec wireless switch kits: each is a plug-in outlet receiver + stick-anywhere wireless switch plate. Control lamps from the door with zero wiring. ~$25 each new — $11 for both.", ph:["f21-2","f21","f21-3"]},
+ {s:"Home decor & more", n:"Gold wire wall shelves — 2 (incl. over-door style)", p:"$20", note:"Both for $20.", d:"Two matching gold wire grid shelves: one wall-mount (~36\" with upturned ends) and one that mounts above a door or window. Mounting screws included.", ph:["b7","b7-2","e30"]},
+ {s:"Home decor & more", n:"Gold wire 2-pocket wall file", p:"$12", note:"", d:"Gold wire two-pocket hanging wall file / magazine rack with label frames.", ph:["d4"]},
+ {s:"Home decor & more", n:"Black wavy 5-hook wall racks — 2", p:"$8 each", note:"Or $15 for both.", d:"Two black metal wave-shaped wall racks with 5 round hooks each, ~36\" wide. Coats, towels, bags. $8 each or $15 for the pair.", ph:["e1"]},
+ {s:"Home decor & more", n:"Green glass bottle vase", p:"$10", note:"", d:"Olive-green glass bottle vase, ~12\" tall. One stem in it and it's a whole look.", ph:["e6"]},
+ {s:"Home decor & more", n:"Large turquoise ceramic planter", p:"$20", note:"", d:"Big turquoise glazed ceramic planter with textured pattern. Gorgeous color.", ph:["d16"]},
+ {s:"Home decor & more", n:"Cream ceramic planter", p:"$5", note:"Mid-century style.", d:"Cream/ivory glazed ceramic planter with a footed base. Clean mid-century lines.", ph:["c7","c7-2"]},
+ {s:"Home decor & more", n:"Cement planters (2): leaf pot + trough", p:"$12", note:"Both.", d:"Two cement planters: round pot with carved leaf design + rectangular trough. Great texture, ready for succulents. $12 for both.", ph:["e44"]},
+ {s:"Home decor & more", n:"Metal 3-tier outdoor plant shelf", p:"$20", note:"Honest rust.", d:"White metal 3-tier shelf unit for plants or garden gear, ~2 ft wide. Weathered with honest rust streaks — farmhouse-garden look, or a quick spray-paint project.", ph:["f10"]},
+ {s:"Home decor & more", n:"Expandable wood trellises / accordion fence — 2", p:"$20", note:"Both for $20.", d:"Two expandable diamond-lattice wood trellises — accordion-stretch to fit. Plants, pet gate, photo backdrop, whatever.", ph:["e22"]},
+ {s:"Home decor & more", n:"Watering can + hand cultivator", p:"$4", note:"Sage green.", d:"Sage-green metal watering can with long spout + white hand cultivator.", ph:["m10"]},
+ {s:"Home decor & more", n:"Halloween decor lot", p:"$20", note:"Whole spooky box.", d:"Halloween lot: posable skeletons, black cat statue, metallic pumpkin jar, coffin 'Home Sweet Home' sign, spiders, ghost dish, pumpkin candle, velvet pumpkin, the pumpkin table runner, the pumpkin accent rug, AND a felt BOO ghost. Everything spooky, one price.", ph:["e26","e26-2","d10"]},
+ {s:"Home decor & more", n:"Christmas decor lot", p:"$25", note:"Whole holiday box.", d:"Christmas lot: basket of rose-gold and silver ornaments, star tree topper, two strings of lights, two unopened rolls of plaid gift wrap, bells, and a holiday foaming soap.", ph:["f19","f19-2","f19-3"]},
+ {s:"Home decor & more", n:"Coleman twin air mattresses (2) + battery pump", p:"$40", note:"18\" double-high.", d:"TWO Coleman SupportRest twin air mattresses, double-high (18\"), 300-lb capacity, in their boxes — plus an Intex battery-powered quick-fill pump. Over $100 retail combined.", ph:["f16"]},
+ {s:"Home decor & more", n:"Waffle-weave shower curtain + liner + rings, white", p:"$12", note:"Never used.", d:"White waffle-weave fabric shower curtain with metal grommets, INCLUDING the liner and the rings — the complete setup, never used, still crisp.", ph:["m14"]},
+ {s:"Home decor & more", n:"Chrome hanging shower caddy", p:"$3", note:"", d:"Over-the-showerhead chrome caddy: two shelves, soap dish, razor hooks, cup holder.", ph:["e16"]},
+ {s:"Home decor & more", n:"AquaHomeGroup 15-stage shower filter + cartridges", p:"$20", note:"Softer water, better hair.", d:"AquaHomeGroup 15-stage chrome shower filter in box. One cartridge is lightly used — that one goes in right away — plus THREE sealed spares. A year+ of filtered showers; ~$50 retail for the set.", ph:["f18","f18-2"]},
+ {s:"Home decor & more", n:"Conair handheld garment steamer", p:"$12", note:"", d:"Conair ExtremeSteam handheld garment steamer with delicate setting. De-wrinkles fast.", ph:["m15","m15-2"]},
+ {s:"Home decor & more", n:"GemForce ionic hair dryer", p:"$2", note:"Old but works.", d:"GemForce infrared/ceramic hair dryer with concentrator nozzle. Old but still works fine.", ph:["m16"]},
+ {s:"Home decor & more", n:"Swiffer WetJet mop", p:"$7", note:"", d:"Swiffer WetJet spray mop with a pad on. Solution bottle is empty — grab a refill and you're mopping. Batteries in, works.", ph:["m6"]},
+ {s:"Home decor & more", n:"O-Cedar broom + snap-on dustpan", p:"$8", note:"", d:"O-Cedar angle broom with clip-on dustpan. The apartment essential.", ph:["m7"]},
+ {s:"Home decor & more", n:"Lysol disinfectant sprays (2)", p:"$3 each", note:"19 oz, full.", d:"Two full 19-oz Lysol disinfectant sprays, crisp linen. $3 each, ~$8 each at the store.", ph:["c8-2"]},
+ {s:"Home decor & more", n:"Softsoap refill jug", p:"$1", note:"", d:"Softsoap antibacterial hand soap refill jug (50 oz size, about half left).", ph:["m18-3"]},
+ {s:"Home decor & more", n:"Listerine Cool Mint, 1.5L (unopened)", p:"$4", note:"~$9 retail.", d:"Unopened 1.5-liter Listerine Cool Mint. Half retail because it's leaving in a box otherwise.", ph:["m18"]},
+ {s:"Home decor & more", n:"Garnier micellar water, value size (unopened)", p:"$5", note:"~$10 retail.", d:"Unopened Garnier SkinActive micellar cleansing water, 23.7-oz value size. All-in-one makeup remover and cleanser.", ph:["m18-2"]},
+ {s:"Home decor & more", n:"Philip B Peppermint Avocado shampoo, 32 oz", p:"$20", note:"$100 retail size.", d:"Philip B Peppermint & Avocado volumizing shampoo in the giant 32-oz salon size — this bottle is ~$100 new. Mostly full.", ph:["m17"]},
+ {s:"Home decor & more", n:"Premium haircare duo: Kérastase + Oribe", p:"$25", note:"$95 retail together.", d:"Kérastase Genesis Fondant Renforçateur fortifying conditioner (200ml, mostly full) + Oribe Serene Scalp Oil Control treatment mist. $95 retail together — salon hair for $25. Or $15 each.", ph:["f22","f22-2"]},
+ {s:"Home decor & more", n:"Moving tie-down kit: CAT straps + 100ft rope", p:"$30", note:"Move-day essentials.", d:"The whole tie-down kit: 2 CAT ratchet straps, 2 CAT tow/lashing straps, an extra ratchet strap, and 100 ft of 3/8\" diamond-braid rope. Everything you need to strap a load down.", ph:["m3","m3-2","m3-3"]},
+ {s:"Home decor & more", n:"Kobalt tool tote + hand saw + stud finder", p:"$20", note:"", d:"Kobalt open tool tote with a hand saw, stud finder, and room for the rest of your tools.", ph:["m4","m4-2"]},
+ {s:"Home decor & more", n:"Gorilla Ladders 2-step folding stool", p:"$18", note:"$30 new.", d:"Gorilla Ladders 2-step folding steel step stool with grab handle and grippy treads. Solid, folds flat.", ph:["d1","d1-2","d1-3"]},
+ {s:"Home decor & more", n:"Woowind portable tire inflator", p:"$15", note:"Cordless, digital.", d:"Woowind cordless tire inflator / air pump with digital pressure display and presets — car tires, bike tires, balls. Charges by USB. ~$40 new.", ph:["f7"]},
+ {s:"Home decor & more", n:"Fire extinguisher (First Alert)", p:"$10", note:"Gauge in the green.", d:"First Alert home fire extinguisher, gauge reads full/green, with mounting bracket. Every kitchen should have one.", ph:["e7"]},
+ {s:"Home decor & more", n:"Snow brush / ice scraper, extendable", p:"$8", note:"", d:"Extendable snow brush with pivoting head and ice scraper.", ph:["m8"]},
+ {s:"Home decor & more", n:"Comfort Zone retro drum fan, red", p:"$10", note:"Loud color, works great.", d:"Comfort Zone 9\" retro metal drum fan in red with chrome handle. High-airflow little machine.", ph:["d8"]},
+ {s:"Home decor & more", n:"Holmes compact heater fan", p:"$10", note:"", d:"Holmes 1Touch compact space heater / fan. Works — cozy under a desk.", ph:["d7"]},
+ {s:"Home decor & more", n:"Cat bowls: slow-feeder + watermelon", p:"$10", note:"Both.", d:"Pink fish-bone slow-feeder dish (makes fast eaters pace themselves) + hand-painted watermelon bowl. $10 for both — pairs great with a certain cat habitat.", ph:["f24","f24-2"]},
+ {s:"Home decor & more", n:"MaxKare electric heating pad", p:"$10", note:"XL size.", d:"MaxKare extra-large electric heating pad in teal velvet — controller with heat levels, machine-washable pad. Sore-back essential.", ph:["e41"]},
+ {s:"Home decor & more", n:"London Fog rolling carry-on", p:"$20", note:"Overnighter size.", d:"London Fog rolling underseat carry-on — telescoping handle, smooth wheels, plaid-lined interior with zip garment panel and mesh pockets.", ph:["e51","e51-2","e51-3"]},
+ {s:"Home decor & more", n:"Blue Q zip coin pouch", p:"$4", note:"", d:"Blue Q recycled zip pouch: 'I know you're at the store. What are you buying me? Better be good.'.", ph:["e48"]},
+ {s:"Home decor & more", n:"Brightroom over-sink dish drainer", p:"$8", note:"New with tag.", d:"Brightroom expandable over-the-sink dish drainer with utensil cup — brand new, tag still on.", ph:["e52","e52-2"]},
+ {s:"Home decor & more", n:"Complete skateboard — shark deck", p:"$20", note:"Ready to ride.", d:"Complete skateboard: Jackson Pilz shark-graphic deck, metal trucks, checkered wheels. Normal wear, ready to ride.", ph:["d14","d14-2"]},
+ // Little things
+ {s:"Little things", n:"Yellow legal pads (~8)", p:"$6", note:"", d:"Stack of about eight yellow legal pads, most barely used.", ph:["m19"]},
+ {s:"Little things", n:"Paper clips + binder clips", p:"$1", note:"", d:"Container of paper clips, binder clips, and a staple strip.", ph:["m22"]},
+ {s:"Little things", n:"Rubber bands (box)", p:"$1", note:"", d:"Box of rubber bands.", ph:["m23"]},
+ // Clothing & accessories
  {s:"Clothing & accessories", n:"New Balance 2010, cream/tan — M8 / W9.5", p:"$50", note:"2025 make.", d:"New Balance 2010 (U2010SGR) in cream/tan layered mesh and suede — men's 8 / women's 9.5, March 2025 manufacture. $120+ retail, honest light wear.", ph:["d12","d12-2"]},
  {s:"Clothing & accessories", n:"Calvin Klein crossbody bag, black leather + gold chain", p:"$25", note:"$150 retail.", d:"Calvin Klein crossbody in black pebbled leather with gold chain-accent strap and gold logo hardware. Clean, good condition. Around $150 retail.", ph:["c11","c11-2"]},
  {s:"Clothing & accessories", n:"Vintage-style black croc mini handbag", p:"$18", note:"Gold turn-lock.", d:"Black croc-embossed mini handbag with top handle and gold turn-lock clasp, clean fabric-lined interior with zip pocket.", ph:["d11","d11-2","d11-3"]},
@@ -139,9 +225,6 @@ const ITEMS = [
  {s:"Clothing & accessories", n:"Cream crochet lace cardigan (M)", p:"$10", note:"100% cotton.", d:"Ultra Pink cream crochet lace button cardigan with collar, size M, 100% cotton.", ph:["h11","h11-2"]},
  {s:"Clothing & accessories", n:"'95' jersey tee, white/blue (XS)", p:"$6", note:"", d:"White v-neck football-style jersey tee with blue 95 and sleeve stripes, size XS.", ph:["h12"]},
  {s:"Clothing & accessories", n:"Oversized plaid button-up, navy/red", p:"$8", note:"", d:"Oversized navy and red plaid flannel-weight button-up with big chest pocket. Cozy boyfriend fit.", ph:["h13"]},
- {s:"Little things", n:"Yellow legal pads (~8)", p:"$6", note:"", d:"Stack of about eight yellow legal pads, most barely used.", ph:["m19"]},
- {s:"Little things", n:"Paper clips + binder clips", p:"$1", note:"", d:"Container of paper clips, binder clips, and a staple strip.", ph:["m22"]},
- {s:"Little things", n:"Rubber bands (box)", p:"$1", note:"", d:"Box of rubber bands.", ph:["m23"]},
  {s:"Clothing & accessories", n:"Vintage 80s adidas track pullover — black/salmon/neon", p:"$60", note:"Taiwan-era trefoil. Collector piece.", d:"Vintage 1980s adidas quarter-zip track pullover: black and salmon colorblock, neon yellow fleece collar and chevrons, orange zip and embroidered logo, drawstring hem. Authentic Taiwan R.O.C.-era trefoil tag — the tag collectors check for. These sell $50-110 online; $60 gets it today.", ph:["h22","h22-2","h22-3"]},
  {s:"Clothing & accessories", n:"Vintage 80s Donna Morgan dress, velvet collar", p:"$28", note:"Pearl buttons.", d:"Vintage 'Donna Morgan for Non Stop' 1980s dress: black micro-check with cream velvet collar, pearl buttons, puff shoulders, elastic waist, midi length.", ph:["h23","h23-2"]},
  {s:"Clothing & accessories", n:"Vintage 90s GAP plaid zip jacket (M)", p:"$15", note:"Hong Kong-made.", d:"Vintage 1990s GAP zip jacket in green/navy/yellow plaid, size M, 100% cotton, Hong Kong-made (the old-tag era). Cropped boxy fit, side pockets.", ph:["h24","h24-2"]},
@@ -163,103 +246,30 @@ const ITEMS = [
  {s:"Clothing & accessories", n:"Hudson wide-leg jeans, light wash", p:"$15", note:"Premium denim.", d:"Hudson light-wash wide-leg jeans with distressed pockets and knee. Premium denim, ~$200 retail line.", ph:["h30","h30-2"]},
  {s:"Clothing & accessories", n:"blanc. checkered crop sweater", p:"$14", note:"", d:"blanc clothing black-and-white distressed checkered crop sweater — raw hems, boxy fit.", ph:["h29","h29-2"]},
  {s:"Clothing & accessories", n:"Kipling backpack, navy", p:"$30", note:"Clean inside.", d:"Kipling crinkle-nylon backpack in navy — flap top with magnetic snaps over a drawstring main compartment, front zip pocket, interior zip pocket. Clean khaki lining; normal outer wear. ~13–14\" tall.", ph:["b8","b8-2","b8-3","b8-4","b8-5"]},
- {s:"Kitchen", n:"White dinnerware set (~12 pieces)", p:"$15", note:"", d:"White dinnerware: 4 bowls, 4 lunch plates, 4 dinner plates. Clean modern shape, light wear.", ph:["m1"]},
- {s:"Kitchen", n:"FoodSaver vacuum sealer + 6 Kirkland bag rolls", p:"$50", note:"$150+ value.", d:"FoodSaver FM2000-series vacuum sealer (works great) plus SIX sealed Kirkland vacuum-bag rolls — that's $90+ in bags alone.", ph:["d13","d13-2"]},
- {s:"Kitchen", n:"ChefWave Milkmade — makes oat/almond/soy milk", p:"$30", note:"$240 new — priced to vanish.", d:"ChefWave Milkmade non-dairy milk maker — 6 programs (almond, oat, soy, cashew, macadamia, coconut), auto-clean, glass pitcher included. Works perfectly. $240 new.", ph:["c12","c12-2"]},
- {s:"Kitchen", n:"Elite Gourmet mini slow cooker, 1.5 qt", p:"$10", note:"Perfect for one.", d:"Elite Gourmet 1.5-quart mini slow cooker, white — low/high/warm settings, glass lid, removable ceramic crock. Works great. About $17 new.", ph:["c9"]},
- {s:"Kitchen", n:"Glass electric kettle", p:"$15", note:"Fast boil.", d:"Glass and stainless electric kettle, 1.8L with cup markings, cordless pour. Boils fast.", ph:["e28"]},
- {s:"Kitchen", n:"Cuisinart coffee/spice grinder", p:"$12", note:"Stainless.", d:"Cuisinart stainless electric blade grinder for coffee beans and spices. Works great.", ph:["c13","c13-2"]},
- {s:"Kitchen", n:"Le Creuset French press + 3 mugs (cream)", p:"$70", note:"Like new.", d:"Le Creuset stoneware French press (cafetière) + 3 matching mugs in cream Meringue. Like new, no chips or cracks. Over $140 retail.", ph:["a8","a8-2","a8-3"]},
- {s:"Kitchen", n:"Happy Camper enamel-style mug", p:"$4", note:"", d:"Red 'Happy Camper' camp mug.", ph:["f14"]},
- {s:"Kitchen", n:"Coffee filters canister + filters", p:"$8", note:"Bamboo lid.", d:"Black chalkboard-style 'Coffee Filters' canister with bamboo lid, stack of basket filters included.", ph:["f25","f25-2"]},
- {s:"Kitchen", n:"Penny candy jar (green tea included)", p:"$8", note:"", d:"Classic glass penny-candy jar with brushed metal lid — currently full of Kirkland green tea bags, which come with it.", ph:["e35"]},
- {s:"Kitchen", n:"3 white tea tins", p:"$8", note:"Chalkboard labels.", d:"Three white metal tea tins with inner lids, one with chalkboard label. Airtight-ish, cute.", ph:["e10"]},
- {s:"Kitchen", n:"Victoria C&E bone china teacup + saucer", p:"$18", note:"England, teal + gold.", d:"Victoria C&E English bone china teacup and saucer — teal with gold chintz pattern, gold handle and trim.", ph:["e42","e42-3","e42-2"]},
- {s:"Kitchen", n:"Vintage tumbler collection (~11 glasses)", p:"$55", note:"1980s vintage. Ask about sets.", d:"Vintage glass collection from the 1980s, about 11 pieces: pastel-ring striped tumblers, yellow-and-white stripes, and turquoise diamond-pattern highballs. These go for $8–15 per glass on Etsy — take the lot for $55, or ask about sets.", ph:["c6","c6-5","c6-6","c6-2"], fit:"contain"},
- {s:"Kitchen", n:"Vintage fruit juice glasses — pair", p:"$8", note:"Or $5 each.", d:"Two 1980s vintage juice/shot glasses: one with oranges and strawberries, one with tomatoes on the vine. $8 for the pair or $5 each.", ph:["f12","c6-3","c6-4"]},
- {s:"Kitchen", n:"Stackable thick glass canister set (4)", p:"$20", note:"Or $5 each.", d:"Four square stackable thick-glass canisters with gasket lids (Anchor Hocking style). $20 for all four, or $5 each.", ph:["d15","d15-2"]},
- {s:"Kitchen", n:"Handmade pottery bowl, thunderbird", p:"$12", note:"Studio pottery.", d:"Wheel-thrown studio pottery bowl: matte black exterior with carved white thunderbird/eagle design, celadon-glazed interior with spiral. One-of-a-kind, ~7\" across. (Its twin already sold.)", ph:["e11","e11-2","e11-3"]},
- {s:"Kitchen", n:"Patterned bowl set — 13 colorful bowls", p:"$15", note:"", d:"Thirteen colorful patterned rice/dip bowls — florals, dots, geometrics, every one different. $15 for all.", ph:["e12"]},
- {s:"Kitchen", n:"Blue pottery pie dish + koi plate", p:"$15", note:"", d:"Blue scalloped-edge stoneware pie dish with carved swirl center + blue-and-white hand-painted koi fish plate. Kitchen art.", ph:["e14","e14-2"]},
- {s:"Kitchen", n:"White oval serving platter, beaded rim", p:"$10", note:"", d:"White ceramic oval serving platter with a beaded rim — clean, no marks. (Yes, there are two platters. Different platters. Both great.)", ph:["f11"]},
- {s:"Kitchen", n:"Big white beaded serving platter ~18\"", p:"$10", note:"", d:"Large cream-white ceramic oval serving platter with a beaded rim, roughly 18×14. Light utensil marks, no cracks.", ph:["c2","c2-2"]},
- {s:"Kitchen", n:"Tortilla warmer", p:"$5", note:"", d:"Terracotta-tone tortilla warmer, keeps a stack hot through the whole meal.", ph:["f6","f6-2"]},
- {s:"Kitchen", n:"Bamboo foil & bag organizer set (5)", p:"$20", note:"$40+ new.", d:"Five bamboo drawer dispensers labeled Foil, Plastic, Gallon, Quart, Sandwich — organize the whole wrap drawer. Bags and foil started included.", ph:["e24"]},
- {s:"Kitchen", n:"Pantry canister set — 11 airtight containers", p:"$40", note:"POP-style, $100+ new.", d:"Eleven push-button airtight pantry canisters (OXO POP style) in graduated sizes, with chalkboard labels. This system is $100+ new. Contents not included.", ph:["e27"]},
- {s:"Kitchen", n:"Food storage container lot", p:"$10", note:"Snap-lock lids.", d:"Full drawer of food storage: snap-lock containers with teal seals, round and square, plus misc. Take the drawer's worth.", ph:["e25"]},
- {s:"Kitchen", n:"Wood lazy Susan turntable", p:"$5", note:"~14\".", d:"Solid wood lazy Susan turntable, ~14\". Spins smooth.", ph:["e5"]},
- {s:"Kitchen", n:"Brita UltraMax dispenser + 8 sealed filters", p:"$30", note:"$75+ retail together.", d:"Brita UltraMax 18-cup fridge dispenser with spigot PLUS 8 sealed replacement filters — that's a year of clean water. $75+ retail together.", ph:["d9-3","d9-4","d9","d9-2"]},
- {s:"Kitchen", n:"Kirkland Stretch-Tite plastic wrap, 750 sq ft", p:"$8", note:"Unopened.", d:"Kirkland Signature Stretch-Tite plastic food wrap, 750 square feet, unopened, slide cutter included.", ph:["d6"]},
- {s:"Kitchen", n:"Salad spinner", p:"$3", note:"", d:"Pull-cord salad spinner, green basket, doubles as a colander. Clean.", ph:["e34"]},
- {s:"Kitchen", n:"Vittles Vault pet food containers — pair", p:"$30", note:"$40 each new.", d:"Two Gamma2 Vittles Vault airtight pet food containers (~30 lb size each), screw-on lids. $40 each new — $30 for both. Honest note: one has a small crack on the ridge; doesn't affect the seal-screw lid.", ph:["e31"]},
- {s:"Kitchen", n:"Commercial food tubs (4) + rolling caddies (2) — set", p:"$48 set", note:"Tubs $8 · caddies $12.", d:"FOUR Costco Business Center commercial round food tubs (~12 qt) with lids + TWO black rolling plant caddies with locking casters — the caddies are really nice. $48 takes the whole set, or split: tubs $8 each, caddies $12 each.", ph:["e2"]},
- {s:"Kitchen", n:"Optimum Nutrition Gold Standard Whey (partial bag)", p:"$5", note:"Extreme Milk Chocolate.", d:"Optimum Nutrition Gold Standard 100% Whey, Extreme Milk Chocolate, 5.64 lb bag with some left in it. $5 and it's yours — protein's protein.", ph:["e9"]},
- {s:"Home decor & more", n:"Gold mesh pendant swag lamp (plug-in)", p:"$40", note:"No wiring needed.", d:"Gold wire-mesh oval pendant that hangs from a ceiling hook and plugs into a normal outlet — no wiring needed. Works; Edison spiral bulb included. Warm, glowy light.", ph:["a15","a15-2"]},
- {s:"Home decor & more", n:"Stick lamp, marble base with USB port", p:"$10", note:"Charges your phone.", d:"Black stick lamp with white marble base and a built-in USB-A charging port. Works great; pull-chain switch. ~19\" tall.", ph:["b4","b4-2","b4-3"]},
- {s:"Home decor & more", n:"Wall sconces, black + linen shade — pair", p:"$15", note:"Both for $15.", d:"Two matching black metal wall sconces with white linen shades. Hardwired — bring someone handy to swap them off the wall, or use a hardwire-to-plug kit.", ph:["e29"]},
- {s:"Home decor & more", n:"Gold wire wall shelves — 2 (incl. over-door style)", p:"$20", note:"Both for $20.", d:"Two matching gold wire grid shelves: one wall-mount (~36\" with upturned ends) and one that mounts above a door or window. Mounting screws included.", ph:["b7","b7-2","e30"]},
- {s:"Home decor & more", n:"Gold wire 2-pocket wall file", p:"$12", note:"", d:"Gold wire two-pocket hanging wall file / magazine rack with label frames.", ph:["d4"]},
- {s:"Home decor & more", n:"Black wavy 5-hook wall racks — 2", p:"$8 each", note:"Or $15 for both.", d:"Two black metal wave-shaped wall racks with 5 round hooks each, ~36\" wide. Coats, towels, bags. $8 each or $15 for the pair.", ph:["e1"]},
- {s:"Home decor & more", n:"Black wire basket, wood base", p:"$10", note:"", d:"Round black wire basket with solid wood base and coil handles. Blankets, laundry, firewood.", ph:["e32"]},
- {s:"Home decor & more", n:"Green glass bottle vase", p:"$10", note:"", d:"Olive-green glass bottle vase, ~12\" tall. One stem in it and it's a whole look.", ph:["e6"]},
- {s:"Home decor & more", n:"Large turquoise ceramic planter", p:"$20", note:"", d:"Big turquoise glazed ceramic planter with textured pattern. Gorgeous color.", ph:["d16"]},
- {s:"Home decor & more", n:"Cream ceramic planter", p:"$5", note:"Mid-century style.", d:"Cream/ivory glazed ceramic planter with a footed base. Clean mid-century lines.", ph:["c7","c7-2"]},
- {s:"Home decor & more", n:"Metal 3-tier outdoor plant shelf", p:"$20", note:"Honest rust.", d:"White metal 3-tier shelf unit for plants or garden gear, ~2 ft wide. Weathered with honest rust streaks — farmhouse-garden look, or a quick spray-paint project.", ph:["f10"]},
- {s:"Home decor & more", n:"Expandable wood trellises / accordion fence — 2", p:"$20", note:"Both for $20.", d:"Two expandable diamond-lattice wood trellises — accordion-stretch to fit. Plants, pet gate, photo backdrop, whatever.", ph:["e22"]},
- {s:"Home decor & more", n:"Outdoor string lights — 2 strands", p:"$25", note:"Edison bulbs.", d:"Two strands of commercial-style outdoor string lights with Edison bulbs (~48 ft total). Currently hung on the patio — I'll have them down and coiled for pickup.", ph:["e19","e19-2"]},
- {s:"Home decor & more", n:"Coleman twin air mattresses (2) + battery pump", p:"$40", note:"18\" double-high.", d:"TWO Coleman SupportRest twin air mattresses, double-high (18\"), 300-lb capacity, in their boxes — plus an Intex battery-powered quick-fill pump. Over $100 retail combined.", ph:["f16"]},
- {s:"Home decor & more", n:"Igloo 28-qt cooler, teal", p:"$10", note:"", d:"Igloo 28-quart hard cooler in teal with carry handle. Needs a wipe-down, works perfectly.", ph:["e20"]},
- {s:"Home decor & more", n:"Ozark Trail soft cooler backpack", p:"$20", note:"24-can size.", d:"Ozark Trail leak-tight soft cooler, ~24-can capacity, welded seams, zip pocket, shoulder strap.", ph:["e21"]},
- {s:"Home decor & more", n:"Halloween decor lot", p:"$20", note:"Whole spooky box.", d:"Halloween lot: posable skeletons, black cat statue, metallic pumpkin jar, coffin 'Home Sweet Home' sign, spiders, ghost dish, pumpkin candle, velvet pumpkin, the pumpkin table runner, the pumpkin accent rug, AND a felt BOO ghost. Everything spooky, one price.", ph:["e26","e26-2","d10"]},
- {s:"Home decor & more", n:"AquaHomeGroup 15-stage shower filter + cartridges", p:"$20", note:"Softer water, better hair.", d:"AquaHomeGroup 15-stage chrome shower filter in box. One cartridge is lightly used — that one goes in right away — plus THREE sealed spares. A year+ of filtered showers; ~$50 retail for the set.", ph:["f18","f18-2"]},
- {s:"Home decor & more", n:"Christmas decor lot", p:"$25", note:"Whole holiday box.", d:"Christmas lot: basket of rose-gold and silver ornaments, star tree topper, two strings of lights, two unopened rolls of plaid gift wrap, bells, and a holiday foaming soap.", ph:["f19","f19-2","f19-3"]},
- {s:"Home decor & more", n:"Wireless remote light switch kits (2) — Suraielec", p:"$11", note:"Both for $11. No wiring.", d:"TWO Suraielec wireless switch kits: each is a plug-in outlet receiver + stick-anywhere wireless switch plate. Control lamps from the door with zero wiring. ~$25 each new — $11 for both.", ph:["f21-2","f21","f21-3"]},
- {s:"Home decor & more", n:"Premium haircare duo: Kérastase + Oribe", p:"$25", note:"$95 retail together.", d:"Kérastase Genesis Fondant Renforçateur fortifying conditioner (200ml, mostly full) + Oribe Serene Scalp Oil Control treatment mist. $95 retail together — salon hair for $25. Or $15 each.", ph:["f22","f22-2"]},
- {s:"Home decor & more", n:"Cat bowls: slow-feeder + watermelon", p:"$10", note:"Both.", d:"Pink fish-bone slow-feeder dish (makes fast eaters pace themselves) + hand-painted watermelon bowl. $10 for both — pairs great with a certain cat habitat.", ph:["f24","f24-2"]},
- {s:"Home decor & more", n:"MaxKare electric heating pad", p:"$10", note:"XL size.", d:"MaxKare extra-large electric heating pad in teal velvet — controller with heat levels, machine-washable pad. Sore-back essential.", ph:["e41"]},
- {s:"Home decor & more", n:"White diamond-pattern brush holder", p:"$5", note:"", d:"Small white ceramic holder with embossed diamond lattice pattern — makeup brushes, pens, whatever fits.", ph:["e43","e43-2"]},
- {s:"Home decor & more", n:"Cement planters (2): leaf pot + trough", p:"$12", note:"Both.", d:"Two cement planters: round pot with carved leaf design + rectangular trough. Great texture, ready for succulents. $12 for both.", ph:["e44"]},
- {s:"Home decor & more", n:"Small gray wastebasket", p:"$5", note:"", d:"Small gray plastic wastebasket, bathroom/desk size.", ph:["e45"]},
- {s:"Home decor & more", n:"London Fog rolling carry-on", p:"$20", note:"Overnighter size.", d:"London Fog rolling underseat carry-on — telescoping handle, smooth wheels, plaid-lined interior with zip garment panel and mesh pockets.", ph:["e51","e51-2","e51-3"]},
- {s:"Home decor & more", n:"IKEA TÄRNABY lantern lamp", p:"$8", note:"Dimmable.", d:"IKEA TÄRNABY table lamp — vintage kerosene-lantern look with glass shade and dimmer knob. Cozy amber glow.", ph:["e46","e46-2"]},
- {s:"Home decor & more", n:"Glass pump dispensers (2)", p:"$6 each", note:"Or $10 both.", d:"Two glass pump dispensers with chalkboard labels and chrome pumps. One has only ever held Listerine, the other only micellar water. $6 each or $10 for both.", ph:["e47","e47-2"]},
- {s:"Home decor & more", n:"Blue Q zip coin pouch", p:"$4", note:"", d:"Blue Q recycled zip pouch: 'I know you're at the store. What are you buying me? Better be good.'.", ph:["e48"]},
- {s:"Home decor & more", n:"Brightroom over-sink dish drainer", p:"$8", note:"New with tag.", d:"Brightroom expandable over-the-sink dish drainer with utensil cup — brand new, tag still on.", ph:["e52","e52-2"]},
- {s:"Home decor & more", n:"Brightroom woven bins (2), gray", p:"$8", note:"Both.", d:"Two gray Brightroom woven-texture plastic bins: tall flexible tote + open storage basket. $8 for both.", ph:["e53"]},
- {s:"Home decor & more", n:"Moving tie-down kit: CAT straps + 100ft rope", p:"$30", note:"Move-day essentials.", d:"The whole tie-down kit: 2 CAT ratchet straps, 2 CAT tow/lashing straps, an extra ratchet strap, and 100 ft of 3/8\" diamond-braid rope. Everything you need to strap a load down.", ph:["m3","m3-2","m3-3"]},
- {s:"Home decor & more", n:"Kobalt tool tote + hand saw + stud finder", p:"$20", note:"", d:"Kobalt open tool tote with a hand saw, stud finder, and room for the rest of your tools.", ph:["m4","m4-2"]},
- {s:"Home decor & more", n:"Igloo Playmate cooler", p:"$12", note:"The classic.", d:"Classic Igloo Playmate 16-qt cooler with the side-swing lid.", ph:["m5","m5-2"]},
- {s:"Home decor & more", n:"Swiffer WetJet mop", p:"$7", note:"", d:"Swiffer WetJet spray mop with a pad on. Solution bottle is empty — grab a refill and you're mopping. Batteries in, works.", ph:["m6"]},
- {s:"Home decor & more", n:"O-Cedar broom + snap-on dustpan", p:"$8", note:"", d:"O-Cedar angle broom with clip-on dustpan. The apartment essential.", ph:["m7"]},
- {s:"Home decor & more", n:"Snow brush / ice scraper, extendable", p:"$8", note:"", d:"Extendable snow brush with pivoting head and ice scraper.", ph:["m8"]},
- {s:"Home decor & more", n:"Sterilite 18-gal tote, red", p:"$5", note:"With lid.", d:"Red Sterilite 18-gallon storage tote with lid.", ph:["m9"]},
- {s:"Home decor & more", n:"Watering can + hand cultivator", p:"$4", note:"Sage green.", d:"Sage-green metal watering can with long spout + white hand cultivator.", ph:["m10"]},
- {s:"Home decor & more", n:"Cotton rope baskets (2), white", p:"$8", note:"Both.", d:"Two white cotton rope storage baskets. Soft-sided, sturdy, nursery-cute.", ph:["m11","m11-2"]},
- {s:"Home decor & more", n:"Gold wire utensil holder", p:"$6", note:"", d:"Gold wire utensil holder / catch-all cup.", ph:["m12"]},
- {s:"Home decor & more", n:"Y-weave storage baskets (2), gray", p:"$6", note:"Both.", d:"Two gray Y-weave storage baskets (Brightroom style). $6 for the pair.", ph:["m13","m13-2"]},
- {s:"Home decor & more", n:"Waffle-weave shower curtain + liner + rings, white", p:"$12", note:"Never used.", d:"White waffle-weave fabric shower curtain with metal grommets, INCLUDING the liner and the rings — the complete setup, never used, still crisp.", ph:["m14"]},
- {s:"Home decor & more", n:"Conair handheld garment steamer", p:"$12", note:"", d:"Conair ExtremeSteam handheld garment steamer with delicate setting. De-wrinkles fast.", ph:["m15","m15-2"]},
- {s:"Home decor & more", n:"GemForce ionic hair dryer", p:"$2", note:"Old but works.", d:"GemForce infrared/ceramic hair dryer with concentrator nozzle. Old but still works fine.", ph:["m16"]},
- {s:"Home decor & more", n:"Philip B Peppermint Avocado shampoo, 32 oz", p:"$20", note:"$100 retail size.", d:"Philip B Peppermint & Avocado volumizing shampoo in the giant 32-oz salon size — this bottle is ~$100 new. Mostly full.", ph:["m17"]},
- {s:"Home decor & more", n:"Listerine Cool Mint, 1.5L (unopened)", p:"$4", note:"~$9 retail.", d:"Unopened 1.5-liter Listerine Cool Mint. Half retail because it's leaving in a box otherwise.", ph:["m18"]},
- {s:"Home decor & more", n:"Garnier micellar water, value size (unopened)", p:"$5", note:"~$10 retail.", d:"Unopened Garnier SkinActive micellar cleansing water, 23.7-oz value size. All-in-one makeup remover and cleanser.", ph:["m18-2"]},
- {s:"Home decor & more", n:"Softsoap refill jug", p:"$1", note:"", d:"Softsoap antibacterial hand soap refill jug (50 oz size, about half left).", ph:["m18-3"]},
- {s:"Home decor & more", n:"Giro Helios Spherical MIPS road helmet (M)", p:"$110", note:"NEVER used. $250 new.", d:"Giro Helios Spherical road helmet with MIPS Spherical tech, size Medium (55-59cm), matte white/silver fade — literally never used, zero rides, zero crashes. $250 new; new ones go $155-215 even on eBay. $110 gets you brand-new head protection at half price.", ph:["h9","h9-2","h9-3"]},
- {s:"Home decor & more", n:"Complete skateboard — shark deck", p:"$20", note:"Ready to ride.", d:"Complete skateboard: Jackson Pilz shark-graphic deck, metal trucks, checkered wheels. Normal wear, ready to ride.", ph:["d14","d14-2"]},
- {s:"Home decor & more", n:"Gorilla Ladders 2-step folding stool", p:"$18", note:"$30 new.", d:"Gorilla Ladders 2-step folding steel step stool with grab handle and grippy treads. Solid, folds flat.", ph:["d1","d1-2","d1-3"]},
- {s:"Home decor & more", n:"Woowind portable tire inflator", p:"$15", note:"Cordless, digital.", d:"Woowind cordless tire inflator / air pump with digital pressure display and presets — car tires, bike tires, balls. Charges by USB. ~$40 new.", ph:["f7"]},
- {s:"Home decor & more", n:"Fire extinguisher (First Alert)", p:"$10", note:"Gauge in the green.", d:"First Alert home fire extinguisher, gauge reads full/green, with mounting bracket. Every kitchen should have one.", ph:["e7"]},
- {s:"Home decor & more", n:"Comfort Zone retro drum fan, red", p:"$10", note:"Loud color, works great.", d:"Comfort Zone 9\" retro metal drum fan in red with chrome handle. High-airflow little machine.", ph:["d8"]},
- {s:"Home decor & more", n:"Holmes compact heater fan", p:"$10", note:"", d:"Holmes 1Touch compact space heater / fan. Works — cozy under a desk.", ph:["d7"]},
- {s:"Home decor & more", n:"Chrome hanging shower caddy", p:"$3", note:"", d:"Over-the-showerhead chrome caddy: two shelves, soap dish, razor hooks, cup holder.", ph:["e16"]},
- {s:"Home decor & more", n:"Lysol disinfectant sprays (2)", p:"$3 each", note:"19 oz, full.", d:"Two full 19-oz Lysol disinfectant sprays, crisp linen. $3 each, ~$8 each at the store.", ph:["c8-2"]},
+ // Art
+ {s:"Art", n:"Large framed figure sketch, black float frame", p:"$35", note:"~24×36.", d:"Large charcoal figure line-art on cream ground, black floater frame, ~24×36. Minimalist statement piece.", ph:["b9","b9-2"]},
+ {s:"Art", n:"Figure sketch, pastel on paper, slim gold frame", p:"$15", note:"~11×14.", d:"Figure sketch in black and red pastel on textured paper, slim gold ornamented frame, ~11×14. Stands or hangs.", ph:["b13"]},
+ {s:"Art", n:"Blush line-art print, wide gold frame", p:"$10", note:"~11×14.", d:"Blush-pink oval line-art of a woman with a flower crown, wide gold frame, ~11×14. Cardboard easel back — stands or hangs.", ph:["b14"]},
+ {s:"Art", n:"Hand & lips line art, chunky wood frame", p:"$10", note:"~8×10.", d:"White-on-charcoal line drawing of a hand holding lips, in a chunky honey-wood frame, ~8×10 overall. Stands or hangs.", ph:["e33"]},
+ {s:"Art", n:"Ballerina print, ornate gold frame", p:"$25", note:"", d:"Degas-style ballerinas in white tutus, warm tones, carved-look gold frame, ~12×18.", ph:["b11","wall-a"]},
+ {s:"Art", n:"Marilyn Monroe print, red mat, glass clip frame", p:"$20", note:"~11×14.", d:"The classic Seven Year Itch subway-grate shot, black and white, in a red mat with a frameless glass clip frame, ~11×14.", ph:["b16"]},
+ {s:"Art", n:"Vintage pin-up in ornate pewter frame", p:"$20", note:"Frame is the prize.", d:"Vintage devil-girl pin-up print in a beautiful ornate pewter scroll frame with easel back. The glass is broken — but in a really cool way. Handle by the frame; the frame alone is worth it.", ph:["f2"]},
+ {s:"Art", n:"\"Earth Sucks\" framed photo print", p:"$12", note:"Ornate vintage frame.", d:"Photo print of a woman in green cat-eye glasses and an 'EARTH SUCKS' shirt, in an ornate carved dark-gold vintage frame, ~5×7. Weird and wonderful.", ph:["d3"]},
+ {s:"Art", n:"Framed b&w cat print, silver beaded frame", p:"$12", note:"Silver beaded frame.", d:"Black and white photo print of a cat with an upside-down cross on its forehead, silver beaded frame.", ph:["b15"]},
+ {s:"Art", n:"Small vintage landscape, black frame", p:"$8", note:"Moody little tree scene.", d:"Small sepia-toned tree landscape in a distressed black rounded frame, ~6×8.", ph:["c5"]},
+ {s:"Art", n:"Vintage brass filigree frame, 8×10", p:"$20", note:"Ornate rococo corners.", d:"Vintage cast-metal filigree frame in brass/gold tone with ornate rococo corners, 8×10 opening, ~11×14 overall. Wall-hung. (Frame only — the photo shown isn't included.)", ph:["b17"]},
+ {s:"Art", n:"Rustic letter 'T' block", p:"$5", note:"", d:"Whitewashed wood block with black metal letter T.", ph:["e18"]},
+ {s:"Art", n:"Handmade metal tiara — branches & butterflies", p:"$25", note:"Quality metal, crystals.", d:"Handmade tiara in quality gold-tone metal: branching twigs, leaves, butterflies, and crystal accents all the way around. Substantial, not costume-flimsy.", ph:["f1","f1-2"]},
+ {s:"Art", n:"Bella White — Just Like Leaving (vinyl LP)", p:"$15", note:"Rounder Records.", d:"Bella White's 'Just Like Leaving' on vinyl (Rounder) — gorgeous modern bluegrass. Sleeve has some sticker scars on the back; record plays beautifully.", ph:["m21","m21-2"]},
 ];
 
 const secBox = document.getElementById('sections');
-const ORDER = ["Furniture & big stuff","Electronics","Kitchen","Art & books","Home decor & more","Little things","Clothing & accessories"];
+const ORDER = ["Furniture & big stuff","Electronics","Kitchen","Containers & baskets","Art","Books","Home decor & more","Little things","Clothing & accessories"];
+const CHIP = {"Furniture & big stuff":"Furniture","Home decor & more":"Home decor","Clothing & accessories":"Clothing","Containers & baskets":"Containers"};
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const sections = ORDER.filter(s=>ITEMS.some(i=>i.s===s)).concat([...new Set(ITEMS.map(i=>i.s))].filter(s=>!ORDER.includes(s)));
 sections.forEach(s=>{
-  const h = document.createElement('h2'); h.textContent = s; secBox.appendChild(h);
+  const h = document.createElement('h2'); h.textContent = s; h.id = slug(s); secBox.appendChild(h);
   const g = document.createElement('div'); g.className='grid'; secBox.appendChild(g);
   ITEMS.filter(i=>i.s===s).forEach(item=>{
     const card = document.createElement('div'); card.className='card'+(item.sold?' sold':'');
@@ -274,6 +284,13 @@ sections.forEach(s=>{
     card.addEventListener('click',()=>openModal(item));
     g.appendChild(card);
   });
+});
+
+const chipBox = document.getElementById('chips');
+sections.forEach(s=>{
+  const a = document.createElement('a');
+  a.href = '#'+slug(s); a.textContent = CHIP[s] || s;
+  chipBox.appendChild(a);
 });
 
 // modal
